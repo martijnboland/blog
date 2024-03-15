@@ -12,7 +12,7 @@ tags:
   - "react"
 ---
 
-### [![apptext-jsexample-960-400](images/apptext-jsexample-960-400_thumb.png "apptext-jsexample-960-400")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/10/apptext-jsexample-960-400.png)
+### ![apptext-jsexample-960-400](./images/apptext-jsexample-960-400_thumb.png "apptext-jsexample-960-400")
 
 ### The case for dynamic localization
 
@@ -28,7 +28,7 @@ With AppText and a little bit of custom code, you can easily add dynamic localiz
 
 The example application for this post is a simple [React](https://reactjs.org/) Single Page Application to take notes.
 
-[![apptext-jsexample](images/apptext-jsexample_thumb.png "apptext-jsexample")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/10/apptext-jsexample.png)
+![apptext-jsexample](./images/apptext-jsexample_thumb.png "apptext-jsexample")
 
 Nothing fancy, but just enough for a complete example. In this post specifically, we are going to localize the labels and error messages.
 
@@ -102,7 +102,7 @@ Let’s say that i18next is going to load all translations with namespace ‘lab
 
 Below you can see how the variables relate to the AppText Admin interface.
 
-[![apptext-i18next](images/apptext-i18next_thumb.png "apptext-i18next")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/10/apptext-i18next.png)That’s all we need to do to integrate i18next with AppText.
+![apptext-i18next](./images/apptext-i18next_thumb.png "apptext-i18next")That’s all we need to do to integrate i18next with AppText.
 
 Displaying the translations in the components is straightforward i18next. In our example with use the useTranslation hook from the ‘react-i18next’ package. A nice example is the Notes list component:
 
@@ -156,7 +156,7 @@ The Notes component has two labels that are displayed with the i18next ‘t’ f
 
 In AppText, these translations are in the ‘labels’ collection:
 
-[![apptext-i18next-labels](images/apptext-i18next-labels_thumb.png "apptext-i18next-labels")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/10/apptext-i18next-labels.png)
+![apptext-i18next-labels](./images/apptext-i18next-labels_thumb.png "apptext-i18next-labels")
 
 Note that the keys for the translations are in natural language, but we could just use synthetic keys. Also, we’re using the [i18next pluralization](https://www.i18next.com/translation-function/plurals) feature with the translation for key ‘There are n notes’.
 

@@ -16,7 +16,7 @@ The comments were a little bit disappointing for my taste, but one from Robert P
 
 And he's right! The impedance mismatch that people often talk about, also exists in web programming. So instead of one impedance mismatch we have to deal with at least two of them! That makes a developers life even worse, according to the rest of the comment.
 
-[![holygrail](images/holygrail_thumb.jpg)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/Embracetheimpedancemismatch_B235/holygrail_2.jpg)What struck me about this comment is the negative tone that might have been caused by frustrations when trying to bridge the gaps between relational databases, OO and web programming. Lots of developers are constantly searching for the one and only **Holy Grail of Software Development** and get frustrated when it appears that what they found is all but the Holy Grail.
+![holygrail](./images/holygrail_thumb.jpg)What struck me about this comment is the negative tone that might have been caused by frustrations when trying to bridge the gaps between relational databases, OO and web programming. Lots of developers are constantly searching for the one and only **Holy Grail of Software Development** and get frustrated when it appears that what they found is all but the Holy Grail.
 
 ### Embrace it
 

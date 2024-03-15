@@ -92,7 +92,7 @@ Combining the Pager html helper and IPagedList<T> in a view page (that inherits 
 
 results in this:
 
-[![aspnetmvc-pager](images/aspnetmvc-pager_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/PagingwithASP.NETMVC_D952/aspnetmvc-pager_2.png)
+![aspnetmvc-pager](./images/aspnetmvc-pager_thumb.png)
 
 You probably recognize the digg-style appearance of the pager. Thanks to the ASP.NET MVC sample application [KIGG](http://www.codeplex.com/Kigg) for inspiration :).
 
@@ -108,7 +108,7 @@ Many scenarios where you want to use paging also use filtering. It's possible to
 </div>
 ```
 
-[![aspnetmvc-pager-2](images/aspnetmvc-pager-2_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/PagingwithASP.NETMVC_D952/aspnetmvc-pager-2_2.png)
+![aspnetmvc-pager-2](./images/aspnetmvc-pager-2_thumb.png)
 
 That's it. A complete solution with demo project can be downloaded below. Feel free to leave any comments or remarks. One of the things I'm not happy about is that I failed to properly unit test the pager, but that's for a different post.
 

@@ -18,7 +18,7 @@ coverImage: {
 
 …or how to cut down custom application development time and save money get productive.
 
-![](images/directus-2.png)
+![](./images/directus-2.png)
 
 Imagine, you’re a software developer and you’re super excited to start this new fancy project. Then, you find out that 80 percent of the work involves coding the **backend** with 40 maintenance screens just for managing data, with hardly any business logic, except some authorization rules.
 
@@ -34,7 +34,7 @@ However, last year, more or less by accident, we discovered an Open Source produ
 
 This post is an introduction to Directus together with some of our real-world experiences.
 
-### What is Directus?[![15967950](images/15967950_thumb.png "15967950")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/02/15967950.png)
+### What is Directus?![15967950](./images/15967950_thumb.png "15967950")
 
 Originally, we stumbled upon Directus because we were looking for a [headless Content Management System (CMS)](https://en.wikipedia.org/wiki/Headless_content_management_system) with strong authorization capabilities, but it turned out to more than that.
 
@@ -46,11 +46,11 @@ Personally, I’d like to think of it as a **Data Management Application** more 
 
 By installing Directus you get:
 
-- A management interface for your data model (called ‘collections’) and forms [![directus-datamodel](images/directus-datamodel_thumb-2.png "directus-datamodel")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/02/directus-datamodel-2.png)
-- A management interface for the data itself [![directus-newsitem](images/directus-newsitem_thumb.png "directus-newsitem")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/02/directus-newsitem.png)
-- Files management – upload images, movies, on-the-fly image resize [![directus-files](images/directus-files_thumb.png "directus-files")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/02/directus-files.png)
+- A management interface for your data model (called ‘collections’) and forms ![directus-datamodel](./images/directus-datamodel_thumb-2.png "directus-datamodel")
+- A management interface for the data itself ![directus-newsitem](./images/directus-newsitem_thumb.png "directus-newsitem")
+- Files management – upload images, movies, on-the-fly image resize ![directus-files](./images/directus-files_thumb.png "directus-files")
 - User and roles management
-- Permissions management (define for each role which fields and items can be accessed, updated and deleted) [![directus-permissions](images/directus-permissions_thumb.png "directus-permissions")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/02/directus-permissions.png)
+- Permissions management (define for each role which fields and items can be accessed, updated and deleted) ![directus-permissions](./images/directus-permissions_thumb.png "directus-permissions")
 - A REST and GraphQL API for other systems to work with the data
 - Database support for PostgreSQL, MySQL, MS SQL Server, SQLite and more
 
@@ -62,7 +62,7 @@ And this is where Directus shines. There are so many [extensibility points](http
 
 On the server-side, you can extend Directus with custom Node.js [hooks](https://docs.directus.io/extensions/hooks/) and API [endpoints](https://docs.directus.io/extensions/endpoints/)(written in JavaScript).
 
-[![directus-dashboard](images/directus-dashboard_thumb-1.png "directus-dashboard")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/02/directus-dashboard-1.png)
+![directus-dashboard](./images/directus-dashboard_thumb-1.png "directus-dashboard")
 
 The screenshot above shows a custom Excel export function we built for in our first project (custom Directus module that calls a custom Directus endpoint).
 

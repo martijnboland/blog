@@ -11,7 +11,7 @@ tags:
   - "localization"
 ---
 
-![Screenshot AppText Admin interface](images/apptext-angle-960-400.png "AppText Admin interface")
+![Screenshot AppText Admin interface](./images/apptext-angle-960-400.png "AppText Admin interface")
 
 ### What is AppText?
 
@@ -41,7 +41,7 @@ dotnet run
 
 Opening the browser and navigating to [https://localhost:5001](https://localhost:5001) shows the default home page of an ASP.NET Core MVC project:
 
-[![aspnetcoreexample-1](images/aspnetcoreexample-1_thumb.png "aspnetcoreexample-1")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-1.png)
+![aspnetcoreexample-1](./images/aspnetcoreexample-1_thumb.png "aspnetcoreexample-1")
 
 Highlighted above are three text resources that we’re going to localize:
 
@@ -114,7 +114,7 @@ Page heading in Views/Home/Index.cshtml:
 
 Now, when running the application again, we get an error message that IStringLocalizer can not be resolved:
 
-[![aspnetcoreexample-2](images/aspnetcoreexample-2_thumb.png "aspnetcoreexample-2")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-2.png)
+![aspnetcoreexample-2](./images/aspnetcoreexample-2_thumb.png "aspnetcoreexample-2")
 
 This is because we didn’t register the localization services in Startup.cs yet. Adding these to Startup.cs fixes the error message:
 
@@ -198,7 +198,7 @@ _A word of warning: AppText is security-agnostic. It totally depends on how auth
 
 Running the application again ([https://localhost:5001](https://localhost:5001)) does not show any difference yet, but we can change the content of the three text resources that we had already localized in the controller and the views by opening the AppText Admin UI via [https://localhost:5001/apptext](https://localhost:5001/apptext):
 
-[![aspnetcoreexample-3](images/aspnetcoreexample-3_thumb.png "aspnetcoreexample-3")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-3.png)
+![aspnetcoreexample-3](./images/aspnetcoreexample-3_thumb.png "aspnetcoreexample-3")
 
 Not one but two apps are already created in AppText: our own ‘example\_app’ that we defined in Startup.cs, but there’s also another app: ‘apptext\_admin’. This app contains all text resources for the Admin app and is installed automatically when the Admin app is configured.
 
@@ -206,13 +206,13 @@ _Side note: the Admin interface is a React + TypeScript Single Page Application 
 
 Selecting the ‘example\_app’ displays the dashboard for that app:
 
-[![aspnetcoreexample-4](images/aspnetcoreexample-4_thumb.png "aspnetcoreexample-4")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-4.png)
+![aspnetcoreexample-4](./images/aspnetcoreexample-4_thumb.png "aspnetcoreexample-4")
 
 The dashboard displays the content collections on the left and a list of recently changed content items on the right. By default, the AppText ASP.NET Core localization component creates a ‘Resources’ collection where all text resources are stored.
 
 Clicking ‘Manage items’ brings us to the list of content items:
 
-[![aspnetcoreexample-5](images/aspnetcoreexample-5_thumb.png "aspnetcoreexample-5")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-5.png)
+![aspnetcoreexample-5](./images/aspnetcoreexample-5_thumb.png "aspnetcoreexample-5")
 
 Here we see all text resources in our application that we created earlier with the IStringLocalizer and IViewLocalizer. The items are still empty and our example app will display the content keys.
 
@@ -220,11 +220,11 @@ _Note that the resource keys (green) are prefixed (blue) with the name of the cl
 
 Now let’s see what happens if we edit some text:
 
-[![aspnetcoreexample-6](images/aspnetcoreexample-6_thumb.png "aspnetcoreexample-6")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-6.png)
+![aspnetcoreexample-6](./images/aspnetcoreexample-6_thumb.png "aspnetcoreexample-6")
 
 and then view our application again at [https://localhost:5001](https://localhost:5001):
 
-[![aspnetcoreexample-7](images/aspnetcoreexample-7_thumb.png "aspnetcoreexample-7")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-7.png)
+![aspnetcoreexample-7](./images/aspnetcoreexample-7_thumb.png "aspnetcoreexample-7")
 
 You can now see that our text resources do come from AppText and can be changed any time.
 
@@ -232,7 +232,7 @@ You can now see that our text resources do come from AppText and can be changed 
 
 In the AppText Admin app, we can edit text resources for multiple languages at once. Selecting a language from the language dropdown gives us an extra column where the translations for that language are displayed and can be edited: (we selected ‘nl’ as second language)
 
-[![aspnetcoreexample-8](images/aspnetcoreexample-8_thumb.png "aspnetcoreexample-8")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-8.png)
+![aspnetcoreexample-8](./images/aspnetcoreexample-8_thumb.png "aspnetcoreexample-8")
 
 Before we can see the translations we first need to hook up AppText with the ASP.NET Core [request localization middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-3.1#localization-middleware). This is done by setting ConfigureRequestLocalizationOptions  to true:
 
@@ -260,7 +260,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 Now, the translations are visible by adding ‘?culture=nl’ as querystring:
 
-[![aspnetcoreexample-9](images/aspnetcoreexample-9_thumb.png "aspnetcoreexample-9")](https://blogs.taiga.nl/martijn/wp-content/uploads/Easy-.NET-Core-Localization-with-AppText_A701/aspnetcoreexample-9.png)
+![aspnetcoreexample-9](./images/aspnetcoreexample-9_thumb.png "aspnetcoreexample-9")
 
 That’s it! Two NuGet packages and a couple lines of code and allow you to dynamically change text resources in an ASP.NET Core application.
 

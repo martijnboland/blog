@@ -10,7 +10,7 @@ tags:
   - "javascript"
 ---
 
-[![imgres](images/imgres_thumb.png "imgres")](https://en.wikipedia.org/wiki/JavaScript)[![newdotnetlogo_2](images/newdotnetlogo_2_thumb.png "newdotnetlogo_2")](https://www.microsoft.com/net)
+[![imgres](./images/imgres_thumb.png "imgres")](https://en.wikipedia.org/wiki/JavaScript)[![newdotnetlogo_2](./images/newdotnetlogo_2_thumb.png "newdotnetlogo_2")](https://www.microsoft.com/net)
 
 For .NET developers coming from the safe environment of Visual Studio and C#, the wild west that is the current JavaScript landscape can be very intimidating and confusing. Hopefully, this post will provide a little bit of guidance for your journey into this wild west.
 

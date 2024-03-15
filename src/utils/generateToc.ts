@@ -21,8 +21,8 @@ export function generateToc(headings: ReadonlyArray<MarkdownHeading>) {
 	bodyHeadings.forEach((h) => {
 		const heading: TocItem = { ...h, subheadings: [] };
 
-		// add h2 elements into the top level
-		if (heading.depth === 2) {
+		// add h2 and h3 elements into the top level
+		if (heading.depth === 2 || heading.depth === 3) {
 			toc.push(heading);
 		} else {
 			const lastItemInToc = toc[toc.length - 1]!;

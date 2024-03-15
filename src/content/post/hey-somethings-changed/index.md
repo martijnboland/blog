@@ -10,7 +10,7 @@ tags:
   - "wordpress"
 ---
 
-![](images/smbutton-blue-bg.png) Today, I moved this blog from [SubText](http://subtextproject.com/) to [WordPress](http://wordpress.org/). All was going fine with SubText, but WordPress is so much more sophisticated these days, I couldn't resist it :).
+![](./images/smbutton-blue-bg.png) Today, I moved this blog from [SubText](http://subtextproject.com/) to [WordPress](http://wordpress.org/). All was going fine with SubText, but WordPress is so much more sophisticated these days, I couldn't resist it :).
 
 Since the server is running IIS6 and not the usual LAMP stack, I was prepared for some struggling, but it was pretty easy.
 

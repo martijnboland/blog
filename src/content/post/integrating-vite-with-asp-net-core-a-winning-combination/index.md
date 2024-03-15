@@ -30,7 +30,7 @@ However, it’s 2021 and things have moved on: [SpaServices is deprecated](https
 
 ### Introducing Vite
 
-[![77ripvyhwi6xl0gqkvj9](images/77ripvyhwi6xl0gqkvj9_thumb.png "77ripvyhwi6xl0gqkvj9")](https://blogs.taiga.nl/martijn/wp-content/uploads/2021/02/77ripvyhwi6xl0gqkvj9.png)
+[![77ripvyhwi6xl0gqkvj9](./images/77ripvyhwi6xl0gqkvj9_thumb.png "77ripvyhwi6xl0gqkvj9")](./images/77ripvyhwi6xl0gqkvj9.png)
 
 From the web site [https://vitejs.dev](https://vitejs.dev):
 
@@ -185,7 +185,7 @@ export default defineConfig({
 
 In the ‘build’ property we tell Vite that production bundles must go into the ‘../wwwroot/dist’ folder and the ‘./js/main.js’ is the ‘main’ entrypoint. Running ‘npm run build’ in the ClientApp folder results in the following build output:
 
-[![vite-output](images/vite-output_thumb.png "vite-output")](https://blogs.taiga.nl/martijn/wp-content/uploads/2023/04/vite-output.png)
+![vite-output](./images/vite-output_thumb.png "vite-output")
 
 As you can see, the generated bundles are suffixed with a hash for cache busting, so we cannot directly reference those in our Razor layout file. The [Vite documentation](https://vitejs.dev/guide/backend-integration.html) suggests to use the manifest.json file on the backend to resolve the correct references, but luckily we can use a shortcut with the [asp-src-include](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.scripttaghelper.srcinclude?view=aspnetcore-5.0#Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper_SrcInclude) tag helper:
 

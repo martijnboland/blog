@@ -14,7 +14,7 @@ In older versions of [Directus](http://directus.io), it was possible to customiz
 
 Unfortunately, this feature was dropped due to a refactoring towards the ability to have more than one role per user (as I recall correctly). So we could not hide modules anymore for non-admin users.
 
-[![directus-modules-1](images/directus-modules-1_thumb.png "directus-modules-1")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/04/directus-modules-1.png)
+![directus-modules-1](./images/directus-modules-1_thumb.png "directus-modules-1")
 
 In the above screenshot, on the left, you can see the users and docs modules. It would be great if we could hide these for specific roles.
 
@@ -44,6 +44,6 @@ module.exports = function registerHook({ filter }) {
 
 Et voilà!
 
-[![directus-modules-2](images/directus-modules-2_thumb.png "directus-modules-2")](https://blogs.taiga.nl/martijn/wp-content/uploads/2022/04/directus-modules-2.png)
+![directus-modules-2](./images/directus-modules-2_thumb.png "directus-modules-2")
 
 You could take this much further if you want, by checking for specific roles, or filtering the existing module\_bar items.

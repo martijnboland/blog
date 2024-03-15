@@ -7,7 +7,7 @@ tags:
   - "paging"
 ---
 
-![image](images/image2.png "image")
+![image](./images/image2.png "image")
 
 Last week, a new version of the [MvcPaging](http://github.com/martijnboland/mvcpaging) library has [been released](http://nuget.org/packages/MvcPaging). This time there are some breaking changes and that’s why the major version number is increased.
 
@@ -63,7 +63,7 @@ Html.Pager(pageSize, pageNumber, totalItemCount).Options(o => o
     .MaxNrOfPages(14))
 ```
 
-![image](images/image3.png "image")
+![image](./images/image3.png "image")
 
 ### Configurable number of pages
 

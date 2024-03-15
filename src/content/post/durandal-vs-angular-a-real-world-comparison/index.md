@@ -16,11 +16,11 @@ tags:
 
 \--
 
-[![durandal-240](images/durandal-240.png "durandal-240")](http://durandaljs.com/)[![angular-240](images/angular-240.png "angular-240")](http://angularjs.org)
+[![durandal-240](./images/durandal-240.png "durandal-240")](http://durandaljs.com/)[![angular-240](./images/angular-240.png "angular-240")](http://angularjs.org)
 
 As promised in [my previous post](https://blogs.taiga.nl/martijn/2013/12/05/moped-a-web-client-for-the-mopidy-music-server/), I’ve also built an [AngularJS](http://angularjs.org) version of the [Moped](https://github.com/martijnboland/moped/tree/durandal-vs-angular) web client for [Mopidy](http://mopidy.com). Moped is an HTML 5 music player app that uses Web Sockets to communicate with the Mopidy music server.
 
-[![moped-all-720](images/moped-all-720_thumb.png "moped-all-720")](https://blogs.taiga.nl/martijn/wp-content/uploads/DurandalJS-vs-AngularJS---a-real-world_E702/moped-all-720.png)
+![moped-all-720](./images/moped-all-720_thumb.png "moped-all-720")
 
 The first version of Moped was built with the [DurandalJS](http://durandaljs.com) framework and I’ve built another version with Angular. These two JavaScript frameworks are getting a lot of attention these days (Durandal especially among .NET developers) and are very alike feature-wise. Of course, building the same application twice is  pretty dumb, but at least I learned a lot and it makes up for a nice comparison. The code of both versions can be found at GitHub: [https://github.com/martijnboland/moped/tree/durandal-vs-angular/angular](https://github.com/martijnboland/moped/tree/durandal-vs-angular/angular) for the Angular version and [https://github.com/martijnboland/moped/tree/durandal-vs-angular/durandal](https://github.com/martijnboland/moped/tree/durandal-vs-angular/durandal). Oh and before you ask: I’m not going to do an [Ember](http://emberjs.com/) or [Backbone](http://backbonejs.org/) version ;-).
 

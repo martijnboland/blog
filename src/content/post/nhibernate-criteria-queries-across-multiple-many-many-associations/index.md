@@ -9,7 +9,7 @@ tags:
 
 Recently, I ran into an issue with NHibernate Criteria queries. The scenario is the following:
 
-[![double-many-many](images/double-many-many_thumb_1.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/NHibernatecriteriaqueriesacrossmultiplem_AF7F/double-many-many_4.png)
+![double-many-many](./images/double-many-many_thumb_1.png)
 
 User has a many-many association with Role and Role has a many-many association with Site. I simply wanted all users that belong to a given site (and a whole slew of other optional parameters, therefore the Criteria query).
 

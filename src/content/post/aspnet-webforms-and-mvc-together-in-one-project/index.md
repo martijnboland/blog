@@ -10,7 +10,7 @@ tags:
   - "webforms"
 ---
 
-_This post briefly describes a solution to mix ASP.NET WebForms and MVC in one project. You can download a sample project that might be more useful than my ramblings. [Download the sample here](https://blogs.taiga.nl/martijn/wp-content/uploads/WebFormsMVCDemo.zip), unzip, open with VS 2008 SP1 and hit F5._
+_This post briefly describes a solution to mix ASP.NET WebForms and MVC in one project. You can download a sample project that might be more useful than my ramblings. Download the sample here, unzip, open with VS 2008 SP1 and hit F5._
 
 There are lots of ‘legacy’ ASP.NET WebForms applications out there in the wild. What if you want to create new functionality or rebuild an existing part with ASP.NET MVC, but you can’t (or won’t) create a separate new project?
 
@@ -18,7 +18,7 @@ The simple solution is to add the default MVC folders (Content, Controlllers, Sc
 
 ### Isolate the MVC bits
 
-![webforms-mvc-solution](images/webformsmvcsolution3.png "webforms-mvc-solution")  A simple requirement: I want that all my MVC folders reside in the folder /MyMvcApp _and_ I also want that all urls of the MVC app start with /mymvcapp. No interference with my old WebForms app please.
+![webforms-mvc-solution](./images/webformsmvcsolution3.png "webforms-mvc-solution")  A simple requirement: I want that all my MVC folders reside in the folder /MyMvcApp _and_ I also want that all urls of the MVC app start with /mymvcapp. No interference with my old WebForms app please.
 
 ### Area’s
 
@@ -176,4 +176,4 @@ I’m under the impression that I’m missing something very simple, but couldn�
 
  
 
-That’s it. I created a sample project with both WebForms and an MVC app in a subfolder. [You can download it here](https://blogs.taiga.nl/martijn/wp-content/uploads/WebFormsMVCDemo.zip).
+That’s it. I created a sample project with both WebForms and an MVC app in a subfolder. You can download it here.

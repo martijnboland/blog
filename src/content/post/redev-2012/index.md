@@ -8,7 +8,7 @@ tags:
 ---
 
   
-[![oredev](images/oredev.png "oredev")](http://oredev.org/2012)
+[![oredev](./images/oredev.png "oredev")](http://oredev.org/2012)
 
 Last week, my partner in crime Erwin and I went to Malmö, Sweden to visit the yearly [Øredev](http://oredev.org) conference. One word: magnificent!  
 Øredev is not your average developer conference where you learn about new technology. The topics are much broader, ranging from hardcore programming languages to the more social-cultural aspects of software development.
@@ -32,4 +32,4 @@ It’s too easy to lean back into your comfortable IDE and just put out some cod
 
 Finally, many thanks to the Øredev organization for creating such a great event. I really don’t know of any other event like this in northern/middle Europe. Highly recommended!
 
-[![1931818533](images/1931818533_thumb.jpg "1931818533")](https://blogs.taiga.nl/martijn/wp-content/uploads/2012/11/1931818533.jpg)
+![1931818533](./images/1931818533_thumb.jpg "1931818533")

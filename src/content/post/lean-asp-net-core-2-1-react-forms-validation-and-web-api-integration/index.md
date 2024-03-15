@@ -94,7 +94,7 @@ When a validation error occurs, the Add method returns a BadRequest ActionResult
 
 We’re creating a React app that lists notes on the right side of the screen and has a form to create new notes on the left side. The image  below shows how the app is composed from individual React components:
 
-[![image](images/image_thumb.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP-NET-Core--_C038/image.png)
+![image](./images/image_thumb.png "image")
 
 In a typical react-way, this app has ‘smart’ and ‘dumb’ components. The top-level Notes component is the smart component that connects the User Interface with the API. The other components are Stateless Functional Components that receive data via their props and delegate event handling to their parent(s).
 
@@ -297,7 +297,7 @@ Note that there is a special case when the property name of an error is an empty
 
 #### So what did we actually create with this example?
 
-[![image](images/image_thumb_3.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP-NET-Core--_C038/image_3.png)
+![image](./images/image_thumb_3.png "image")
 
 Two things:
 

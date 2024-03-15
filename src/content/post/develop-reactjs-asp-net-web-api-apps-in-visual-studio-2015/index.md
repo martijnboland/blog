@@ -46,7 +46,7 @@ The Task Runner Explorer can be extended and this is great because we now have t
 
 This extension makes webpack integration super easy. The webpack configuration file (webpack.config.js) is automatically detected after opening the Task Runner Explorer (and it even detects alternative config files for different environments):
 
- [![image](images/image_thumb_4.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Develop-ReactJS-apps-with-ASP.NET_C9B5/image_6.png)
+ ![image](./images/image_thumb_4.png "image")
 
 In the above example, the ‘Serve Hot’ task is bound to ‘Project Open’, in other words, when opening the Visual Studio Solution, the webpack dev server is started with hot module replacement enabled.
 
@@ -69,7 +69,7 @@ The extension allows us to execute the commands from the scripts section of the 
 
 The Visual Studio Task Runner Explorer:
 
-[![image](images/image_thumb_5.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Develop-ReactJS-apps-with-ASP.NET_C9B5/image_7.png)
+![image](./images/image_thumb_5.png "image")
 
 You can see that the ‘start’ script is executed when the project is opened, which in our case means starting the webpack dev server with hot module replacement.
 
@@ -77,7 +77,7 @@ You can see that the ‘start’ script is executed when the project is opened, 
 
 In the intro I mentioned ASP.NET Web API. Often, a Visual Studio solution consists of at least one web project for the client application and static assets and another ASP.NET Web API project as the back-end.
 
-![image](images/image_3.png "image")
+![image](./images/image_3.png "image")
 
 On GitHub, you can find an example solution  ([https://github.com/martijnboland/VSReact](https://github.com/martijnboland/VSReact "https://github.com/martijnboland/VSReact")) that has these projects. It’s the well known TodoMVC app with an ASP.NET Web API backend.
 
@@ -87,7 +87,7 @@ _A special note: the VSReact.Web is still based on an empty ASP.NET project alth
 
 For a true ‘hit F5 and run’ experience we have to do one last thing: point the start URL of the VSReact.**Api** project to the webpack dev server, in our case http://localhost:3000/index.html. Then, when you hit F5 or CTRL+F5, the API project builds and runs, but the browser opens nicely with the client app:
 
-[![image](images/image_thumb_3.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Develop-ReactJS-apps-with-ASP.NET_C9B5/image_5.png)
+![image](./images/image_thumb_3.png "image")
 
 To run the example solution, you’ll need the following prerequisites:
 

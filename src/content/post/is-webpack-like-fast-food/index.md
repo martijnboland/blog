@@ -15,4 +15,4 @@ To me, it’s still this magic box with a gazillion configuration options (which
 
 But man, you can do crazy things with it so fast! Almost like fast food. Instant gratification with perhaps a little bad taste afterwards.
 
-[![webpack](images/fast-food-banner_thumb.png "fast-food-banner")](https://webpack.github.io/)
+[![webpack](./images/fast-food-banner_thumb.png "fast-food-banner")](https://webpack.github.io/)

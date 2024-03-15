@@ -19,6 +19,6 @@ So the core library hasn’t changed much, and in all honesty, I think it’s pr
 
 What did change substantially is the sample application. It was still very much ASP.NET 1.0 with WebForms views. This is now a proper ASP.NET MVC 3 application with Razor views and the default ASP.NET MVC 4.0 template for look & feel.
 
- [![Screenshot](images/Screenshot_thumb.png "Screenshot")](https://blogs.taiga.nl/martijn/wp-content/uploads/2011/12/Screenshot.png)
+ ![Screenshot](./images/Screenshot_thumb.png "Screenshot")
 
 The sample application can be found at [GitHub](https://github.com/martijnboland/mvcpaging).

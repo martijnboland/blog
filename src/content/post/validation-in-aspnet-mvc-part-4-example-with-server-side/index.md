@@ -20,8 +20,8 @@ In the previous posts, I described how we implemented model-based validation on 
 
 Now, everything can be found in the [Cuyahoga SVN sources](https://cuyahoga.svn.sourceforge.net/svnroot/cuyahoga/trunk/) but I have to agree that it can be a daunting task to check out the complete sources and find all pieces of the validation puzzle. Therefore, I've created a little sample application with everything from the previous posts combined.
 
-[![validation-sample-app](images/validation-sample-app_thumb.png)](http://blogs.taiga.nl/images/blogs_taiga_nl/martijn/WindowsLiveWriter/Val.NETMVCpart4examplewithserversideandc_13761/validation-sample-app_2.png)
+[![validation-sample-app](./images/validation-sample-app_thumb.png)](http://blogs.taiga.nl/images/blogs_taiga_nl/martijn/WindowsLiveWriter/Val.NETMVCpart4examplewithserversideandc_13761/validation-sample-app_2.png)
 
-Hopefully, this will make things a little bit clearer. [You can download the sample app here](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/MvcValidationSample.zip). Visual Studio 2008 and [ASP.NET MVC Beta](http://www.microsoft.com/Downloads/details.aspx?FamilyID=a24d1e00-cd35-4f66-baa0-2362bdde0766&displaylang=en) are required.
+Hopefully, this will make things a little bit clearer. You can download the sample app here are required.
 
 Enjoy!

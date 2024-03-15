@@ -24,7 +24,7 @@ The last couple of years, many .NET developers are making a gradual shift from d
 
 ### The Framework Vacuum
 
-[![ienro](images/ienro_thumb.jpg "ienro")](https://blogs.taiga.nl/martijn/wp-content/uploads/Java.NET-Developers--Spring-2015-edition_918A/ienro.jpg)
+![ienro](./images/ienro_thumb.jpg "ienro")
 
 After the Angular 2.0 announcement, some of us went desperately looking for alternatives like [React](http://facebook.github.io/react/), [Ember](http://emberjs.com/) or even [VanillaJS](http://vanilla-js.com/), some went back to their trusty Durandal or Knockout codebases and wait for [Aurelia](http://aurelia.io/) to mature and perhaps most of us just continued on the Angular 1.x stack. But there is no clear leading framework or library anymore.
 

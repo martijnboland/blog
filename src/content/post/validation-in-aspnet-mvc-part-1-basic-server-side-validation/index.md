@@ -55,7 +55,7 @@ First we have to make a decision where we want to validate the model. You can do
 
 I've chosen to validate the model from the controller because it's a little bit more convenient as you don't have to throw exceptions across layers and translate those exceptions to error messages for the user. For validation, all controllers inherit from a base controller that has a **ValidateModel()** method. This controller also has an instance of an **IModelValidator** interface to perform the actual validation, so we don't pollute the controller too much with validation logic and also prevent coupling to a specific implementation.
 
-![validation-controller](images/validation-controller_3.png)
+![validation-controller](./images/validation-controller_3.png)
 
 At this point, the controller can validate, but to use the Castle validators we have to implement IModelValidator and pass that to the controller. But first: a base controller doesn't know which type to validate, but a concrete controller does (assuming we're only validating one concrete type in a controller) and therefore we created the IModelValidator<T> interface. The CastleModelValidator<T> class implements this interface.
 
@@ -157,7 +157,7 @@ public ActionResult Login(string returnUrl)
 
 ValidateModel() automatically adds all errors to the ASP.NET MVC ModelState, so we have to do very little to actually display the validation errors:
 
-[![login](images/login_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/Val.NETMVCpart1basicserversidevalidation_F58F/login_2.png)
+![login](./images/login_thumb.png)
 
 ### The code
 

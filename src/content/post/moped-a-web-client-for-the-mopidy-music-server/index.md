@@ -13,7 +13,7 @@ tags:
   - "raspberrypi"
 ---
 
-[![pi](images/pi_thumb.jpg "pi")](https://blogs.taiga.nl/martijn/wp-content/uploads/40d75663ac54_A62E/pi.jpg)A little while ago, I treated myself on a [Raspberry PI](http://www.raspberrypi.org/) with the goal to make it a music server for our living room that can be operated from a phone, tablet or PC.
+![pi](./images/pi_thumb.jpg "pi") with the goal to make it a music server for our living room that can be operated from a phone, tablet or PC.
 
 There are several audio software solutions for the PI and one of these, [Mopidy](http://mopidy.com), promised to do exactly what I wanted. It’s a server that plays audio and it can be configured with a lot of [backend](http://docs.mopidy.com/en/latest/ext/) and [frontend](http://docs.mopidy.com/en/latest/clients/) options. Currently I use it to play Spotify music and radio streams.
 
@@ -25,4 +25,4 @@ For a first version, I picked the [Durandal](http://durandaljs.com/) framework b
 
 A few weeks later and the first version is now on [GitHub](https://github.com/martijnboland/moped). I’ve planned to also build an [Angular](http://angularjs.org/) version because that’s my other weapon of choice nowadays and I think it makes up for a nice comparison.
 
-[![moped-all-720](images/moped-all-720_thumb.png "moped-all-720")](https://blogs.taiga.nl/martijn/wp-content/uploads/40d75663ac54_A62E/moped-all-720.png)
+![moped-all-720](./images/moped-all-720_thumb.png "moped-all-720")

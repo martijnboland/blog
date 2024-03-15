@@ -18,7 +18,7 @@ _This post is part of a multi-post series:_
 2. _Lean ASP.NET Core 2.1 – add a React application to an existing Razor Pages application (this post)_
 3. [_Lean ASP NET Core 2.1 – React forms, validation and Web API integration_](https://blogs.taiga.nl/martijn/2018/08/13/lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/)
 
-[![download](images/download.png "download")](https://reactjs.org/)In the [previous post](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/), I showed how to manually build a simple, lean, ASP.NET Core 2.1 Razor Pages application that uses [webpack](http://webpack.js.org) to bundle client scripts and css styles. As promised, in this post, we’ll add a very small [React](https://reactjs.org/) JavaScript app to the already [existing Razor Pages application](https://github.com/martijnboland/LeanAspNetCore). Again, for the impatient, the source code for this post can be found at  [https://github.com/martijnboland/LeanAspNetCore-React](https://github.com/martijnboland/LeanAspNetCore-React "https://github.com/martijnboland/LeanAspNetCore-React").
+[![download](./images/download.png "download")](https://reactjs.org/)In the [previous post](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/), I showed how to manually build a simple, lean, ASP.NET Core 2.1 Razor Pages application that uses [webpack](http://webpack.js.org) to bundle client scripts and css styles. As promised, in this post, we’ll add a very small [React](https://reactjs.org/) JavaScript app to the already [existing Razor Pages application](https://github.com/martijnboland/LeanAspNetCore). Again, for the impatient, the source code for this post can be found at  [https://github.com/martijnboland/LeanAspNetCore-React](https://github.com/martijnboland/LeanAspNetCore-React "https://github.com/martijnboland/LeanAspNetCore-React").
 
 #### Adding React, but how?
 
@@ -188,7 +188,7 @@ The React app we’re adding will become an app for taking notes. However, in th
     dotnet run
     ```
     
-    and navigate to [https://localhost:5001/ReactNotes](https://localhost:5001/ReactNotes) ![image](images/image.png "image")
+    and navigate to [https://localhost:5001/ReactNotes](https://localhost:5001/ReactNotes) ![image](./images/image.png "image")
     
     Whoops, looks like something is missing. Webpack has an issue with the <App /> component, which is totally understandable because that is the React-specific [JSX](http://buildwithreact.com/tutorial/jsx) syntax and we haven’t done anything yet to let webpack know how to handle that.
 
@@ -308,7 +308,7 @@ dotnet run
 
 Navigating to [https://localhost:5001/ReactNotes](https://localhost:5001/ReactNotes "https://localhost:5001/ReactNotes") should now result in:
 
-[![image](images/image_thumb.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP.NET-Core--_13D82/image_3.png)
+![image](./images/image_thumb.png "image")
 
 Again, the code for this post is at GitHub: [https://github.com/martijnboland/LeanAspNetCore-React](https://github.com/martijnboland/LeanAspNetCore-React "https://github.com/martijnboland/LeanAspNetCore-React"). This is now an application that supports both ‘classic’ server-side development but also ‘modern’ client-side development with React.
 

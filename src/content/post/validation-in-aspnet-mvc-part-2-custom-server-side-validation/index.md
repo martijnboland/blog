@@ -43,7 +43,7 @@ In the example above, the constructor requires an IModelValidator<LoginViewData>
 
 In many scenario's, property validation with the generic CastleModelValidator<T> will suffice, but sometimes you'll need some extra validation. For example, when creating a new user, we want to check if the username doesn't already exist. To perform this check, we created a UserModelValidator class that inherits CastleModelValidator<T>.
 
-[![validation-custom](images/validation-custom_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/Val.NETMVCpart2customserversidevalidatio_B94A/validation-custom_2.png)
+![validation-custom](./images/validation-custom_thumb.png)
 
 The CastleModelValidator<T> calls a virtual method PerformValidation() while validating via IsValid(). In UserModelValidator, this method is overriden and performs the check if the username is unique:
 
@@ -163,7 +163,7 @@ public UsersController(IUserService userService, UserModelValidator userModelVal
 
 Finally, this is how it looks in the browser. Nice to see the custom validation error nicely integrated with the rest of the errors.
 
-[![image](images/image_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/Val.NETMVCpart2customserversidevalidatio_B94A/image_2.png)
+![image](./images/image_thumb.png)
 
 ### Other extension possibilities
 

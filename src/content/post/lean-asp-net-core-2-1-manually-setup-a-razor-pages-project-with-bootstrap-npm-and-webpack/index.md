@@ -20,7 +20,7 @@ _This post is part of a multi-post series:_
 2. [_Lean ASP.NET Core 2.1 – add a React application to an existing Razor Pages application_](https://blogs.taiga.nl/martijn/2018/06/22/lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/)
 3. [_Lean ASP NET Core 2.1 – React forms, validation and Web API integration_](https://blogs.taiga.nl/martijn/2018/08/13/lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/)
 
-[![aspnetcore-logo-591x360](images/aspnetcore-logo-591x360_thumb.png "aspnetcore-logo-591x360")](https://asp.net)
+[![aspnetcore-logo-591x360](./images/aspnetcore-logo-591x360_thumb.png "aspnetcore-logo-591x360")](https://asp.net)
 
 In the past, I have written about setting up a minimal ASP.NET Core MVC application with NPM and webpack ([ASP.NET Core 1.1 version](https://blogs.taiga.nl/martijn/2017/08/02/building-the-minimal-asp-net-core-app-with-webpack-and-npm/), [ASP.NET Core 2.0 version](https://blogs.taiga.nl/martijn/2017/11/24/building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/)). These posts were mainly inspired by some unfortunate choices that had been made in the default Visual Studio project templates.
 
@@ -28,7 +28,7 @@ I tried to show an alternative way to manually setup an ASP.NET MVC project and 
 
 #### But isn’t this modern web development where everything changes all the time?
 
-[![webpack](images/webpack_thumb.png "webpack")](https://webpack.js.org)Yes :-). Fast-forward a few months and we’re in quite a different situation:
+[![webpack](./images/webpack_thumb.png "webpack")](https://webpack.js.org)Yes :-). Fast-forward a few months and we’re in quite a different situation:
 
 - ASP.NET Core 2.1 has been released with a lot of improvements and new features (for example, [Razor Pages](https://docs.microsoft.com/en-us/aspnet/core/mvc/razor-pages/?view=aspnetcore-2.1&tabs=visual-studio));
 - The ASP.NET Core templates are improved significantly. Gone are Bower and things like bundleconfig.json. The simple templates just include the actual .js and .css files without requiring a package manager and the more complex SPA templates (angular, react) use NPM and webpack;
@@ -38,7 +38,7 @@ I tried to show an alternative way to manually setup an ASP.NET MVC project and 
 
 Yes and no. In more situations than before, the default templates will now probably suffice, but on the other hand, I feel there’s something missing between the simple templates and the complex SPA templates.
 
-[![npm](images/npm_thumb.png "npm")](https://www.npmjs.com/)Often, I want to start with a clean simple template _but_ I also want to use NPM and webpack. There’s no template that covers this middle ground and the SPA templates are a bit overkill when you don’t have a SPA.
+[![npm](./images/npm_thumb.png "npm")](https://www.npmjs.com/)Often, I want to start with a clean simple template _but_ I also want to use NPM and webpack. There’s no template that covers this middle ground and the SPA templates are a bit overkill when you don’t have a SPA.
 
 However, in this post I’ll show how easy it is to cover this middle ground with a manual setup. Starting with a simple template and manually add everything else step by step. I’m calling this a ‘lean’ application because we’re only adding the minimal required parts, but with keeping all options open for future extensions.
 
@@ -73,14 +73,14 @@ Since ‘_lean’_ is our objective we’re keeping it simple and don’t use ou
     
     ```
     
-3. Locate the Properties/launchSettings.json file and set the values of both launchUrl attributes to "":[![image](images/image_thumb.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP.NET-Core_C5AB/image.png)
+3. Locate the Properties/launchSettings.json file and set the values of both launchUrl attributes to "":![image](./images/image_thumb.png "image")
 4. Run the application:
     
     ```
     dotnet run
     ```
     
-5. Open your browser and browse to [https://localhost:5001](https://localhost:5001). You should see the following:[![image](images/image_thumb_3.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP.NET-Core_C5AB/image_3.png)
+5. Open your browser and browse to https://localhost:5001](https://localhost:5001). You should see the following:[![image](./images/image_thumb_3.png "image")
 
 It works but it does look a bit basic don’t you think?
 
@@ -163,7 +163,7 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
     See the [webpack documentation](https://webpack.js.org/configuration/) for the configuration options. The configuration file above means: 'start building from the ./js/main.js file, write the results in the ../wwwroot/dist folder and process css files via the css-loader and style-loader'.
     
     _Webpack 4 has a new parameter: 'mode'. The modes are 'development' and 'production' and webpack uses sensible default settings for the modes so you don't have to configure these yourself anymore. See [this post](https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a) for more information._
-5. Add a script command to package.json that executes the webpack build:![image](images/image_thumb_4.png "image")
+5. Add a script command to package.json that executes the webpack build:![image](./images/image_thumb_4.png "image")
 6. Build the client bundle (still from ClientApp folder):
     
     ```
@@ -172,7 +172,7 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
     ```
     
     After building, there is a single file 'main.js' in the /wwwroot/dist folder.
-7. All we need to do now is to create a Razor partial \_Header.cshtml file with a Bootstrap navigation bar and \_Layout.cshtml file that includes the header file and add  a script link to ~/dist/main.js:[![image](images/image_thumb_5.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP.NET-Core_C5AB/image_5.png)Noticed the environment tag helpers in the image above? We just include the main.js script file in the development environment but for the other environments, a version is appended to the file for cache busting. The layout file is set as the default layout for all pages via \_ViewStart.cshtml in the Pages folder. To enable the tag helpers we must add a \_ViewImports.cshtml file to the Pages folder:
+7. All we need to do now is to create a Razor partial \_Header.cshtml file with a Bootstrap navigation bar and \_Layout.cshtml file that includes the header file and add  a script link to ~/dist/main.js:![image](./images/image_thumb_5.png "image")Noticed the environment tag helpers in the image above? We just include the main.js script file in the development environment but for the other environments, a version is appended to the file for cache busting. The layout file is set as the default layout for all pages via \_ViewStart.cshtml in the Pages folder. To enable the tag helpers we must add a \_ViewImports.cshtml file to the Pages folder:
     
     ```
     @namespace LeanAspNetCore.Pages
@@ -194,7 +194,7 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
     dotnet run
     ```
     
-    When browsing to https://localhost:5001 you should now see a nice styled page: [![image](images/image_thumb_6.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP.NET-Core_C5AB/image_6.png)
+    When browsing to https://localhost:5001 you should now see a nice styled page: ![image](./images/image_thumb_6.png "image")
 
 That’s it! With a few steps we added Bootstrap from NPM and we’re able to include it in our application with the help of webpack.
 
@@ -378,7 +378,7 @@ dotnet publish
 
 Navigate to the publish output folder (/bin/Debug/netcoreapp2.1/publish), run the published application with ‘dotnet LeanAspNetCore.dll’ (the application .dll file) and navigate to [https://localhost:5001](https://localhost:5001). You should see the same application as before, but now as an optimized version.
 
-[![image](images/image_thumb_7.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/Lean-ASP.NET-Core_C5AB/image_7.png)
+![image](./images/image_thumb_7.png "image")
 
 Have a look at the page source in the browser and if things went right, you’ll see that the optimized .css and .js files are loaded separately and that a version querystring is added for cache busting.
 

@@ -30,13 +30,13 @@ Also check out the source code of the example application at  [https://github.c
 
 Our [example JavaScript application](https://github.com/martijnboland/apptext/tree/main/examples/javascriptreactexample) contains an Intro component that displays an intro page with a title and content with markup. In AppText, we created a custom ‘Page’ content type with 2 fields: title (short text) and content (long text):
 
-[![apptext-page-content-type_thumb2](images/apptext-page-content-type_thumb2_thumb.png "apptext-page-content-type_thumb2")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/10/apptext-page-content-type_thumb2.png)
+![apptext-page-content-type_thumb2](./images/apptext-page-content-type_thumb2_thumb.png "apptext-page-content-type_thumb2")
 
 _(Note: the short text field can contain max. 500 characters and no formatting where the long text field can contain an unlimited amount of characters and allows [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) formatting. Besides short text and long text, AppText also has number and date(time) fields)_
 
 With the ‘Page’ content type, we then created a ‘pages’ collection where we can edit the content for the Intro page. Note that the ‘Page content’ field allows markdown (in AppText all long text fields can contain Markdown):
 
-[![apptext-edit-intro_thumb2](images/apptext-edit-intro_thumb2_thumb.png "apptext-edit-intro_thumb2")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/10/apptext-edit-intro_thumb2.png)
+![apptext-edit-intro_thumb2](./images/apptext-edit-intro_thumb2_thumb.png "apptext-edit-intro_thumb2")
 
 We can retrieve content of collections with a custom content type such as our pages collection via the REST API or the GraphQL API. In essence, we’re now using AppText as a [Headless CMS](https://en.wikipedia.org/wiki/Headless_content_management_system).
 
@@ -44,7 +44,7 @@ We can retrieve content of collections with a custom content type such as our pa
 
 Before showing how to read and display content from AppText with GraphQL, first a brief introduction about the GraphQL API itself.
 
-[![graphql-pages](images/graphql-pages_thumb.png "graphql-pages")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/11/graphql-pages.png)
+![graphql-pages](./images/graphql-pages_thumb.png "graphql-pages")
 
 The GraphQL schema in AppText is partly dynamic. The top-level fields are the collections (**pages** in the example above). Per collection, you can query collection-specific fields (incl. content type) but also traverse into the **items** field, which represent [content items](https://apptext.io/docs/concepts#content-item). This is where you query the actual content. A content item has some fixed fields like **contentKey** and **version** but also has the fields as defined in the content type. In the example above, **content** and **title** are those dynamic fields.
 
@@ -183,7 +183,7 @@ const { page, fetching, error } = useAppTextPage('intro', i18n.language);
 
 This will get the content for the page where the contentKey starts with ‘intro’ and for the currently selected language, resulting in a **page** object with **title** and **content** properties that is rendered in the component:
 
-[![apptext-intro](images/apptext-intro_thumb.png "apptext-intro")](https://blogs.taiga.nl/martijn/wp-content/uploads/2020/11/apptext-intro.png)
+![apptext-intro](./images/apptext-intro_thumb.png "apptext-intro")
 
 The page.content is rendered with the [ReactMarkdown](https://remarkjs.github.io/react-markdown/) component to safely convert the Markdown into HTML.
 

@@ -28,7 +28,7 @@ The ingredients are:
 
 ### How it works
 
-### [![client-side-validation-1](images/client-side-validation-1_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/Val.NETMVCpart3clientsidevalidationwithj_CA52/client-side-validation-1_2.png)
+### ![client-side-validation-1](./images/client-side-validation-1_thumb.png)
 
 1. The client-side validation is called via an HtmlHelper extension method ClientSideValidation: <%= Html.ClientSideValidation(ViewData.Model, "my\_form\_id")%>;
 2. The HtmlHelper extension requests an instance of a BrowserValidationEngine that returns the client script for validation;
@@ -158,7 +158,7 @@ $(document).ready(function() {
 
 which results in this:
 
-[![client-side-validation-2](images/client-side-validation-2_thumb.png)](https://blogs.taiga.nl/martijn/wp-content/uploads/subtext/WindowsLiveWriter/Val.NETMVCpart3clientsidevalidationwithj_CA52/client-side-validation-2_2.png)
+![client-side-validation-2](./images/client-side-validation-2_thumb.png)
 
 ### Summarizing validation
 

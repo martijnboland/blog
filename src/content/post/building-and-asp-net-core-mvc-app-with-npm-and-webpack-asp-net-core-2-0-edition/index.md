@@ -10,7 +10,7 @@ tags:
   - "webpack"
 ---
 
-[![image](images/image_thumb.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image.png)
+![image](./images/image_thumb.png "image")
 
 _Update: ASP.NET Core 2.1 and webpack 4 are released. I've written a new post, [Lean ASP.NET Core 2.1 - manually setup a Razor Pages project with Bootstrap, NPM and webpack](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/)._
 
@@ -34,11 +34,11 @@ The source code of the project is at [https://github.com/martijnboland/MinimalAs
 
 Let’s start with the empty template:
 
-[![image_thumb[2]](images/image_thumb2_thumb.png "image_thumb[2]")](https://blogs.taiga.nl/martijn/wp-content/uploads/48b009531f82_D1E4/image_thumb2.png)
+![image_thumb[2]](./images/image_thumb2_thumb.png "image_thumb[2]")
 
 resulting in the following project:
 
-[![image](images/image_thumb_4.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image_4.png)
+![image](./images/image_thumb_4.png "image")
 
 ### Step 1: Add configuration files and configure ASP.NET
 
@@ -78,7 +78,7 @@ _As it turns out, this looks remarkably similar to the ASP.NET Core Web API temp
 
 ### Step 2: Add controller, views and a layout
 
-[![image](images/image_thumb_7.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image_7.png) This is straightforward ASP.NET MVC, see [this page](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-controller) for an introduction:
+![image](./images/image_thumb_7.png "image") for an introduction:
 
 - Create folder ‘Controllers’ and add a file HomeController.cs with actions Index() and Error()
 - Create folder ‘Views’ and add \_ViewStart.cshtml (Add New Item –> MVC View Start Page) and \_ViewImports.cshtml (Add New Item –> MVC View Imports Page)
@@ -124,7 +124,7 @@ The layout page (\_Layout.cshtml) already has some bootstrap-specific markup:
 
 This results in a working page without styles:
 
-[![image](images/image_thumb_8.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image_8.png)
+![image](./images/image_thumb_8.png "image")
 
 To make this page a bit prettier, we’re adding [Bootstrap](http://getbootstrap.com/) (and [jQuery](https://jquery.com/) because the Bootstrap JavaScript plugins depend on jQuery).
 
@@ -132,7 +132,7 @@ To make this page a bit prettier, we’re adding [Bootstrap](http://getbootstrap
 
 Bootstrap and jQuery are installed from the NPM repository. NPM is the package manager of Node.js. We have to make sure that a reasonably recent version of [Node.js](https://nodejs.org) (version 6 or higher will do) is installed on our system and that it is on our path so we can run the node and npm commands from a console:
 
-[![image](images/image_thumb_9.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image_9.png)
+![image](./images/image_thumb_9.png "image")
 
 NPM requires a package.json file in the root of the project, so we’re adding that (Add New Item –> npm Configuration file, or from the command line in the root folder with ‘npm init’). After that, we’ll install our client libs with the following command (from the application root folder):
 
@@ -220,7 +220,7 @@ The essential parts in the webpack configuration are the ‘entry’ and the ‘
 
 For the other config options, please check the [webpack configuration reference](https://webpack.js.org/configuration/) and the [loaders documentation](https://webpack.js.org/loaders/) to see what those are all about. It goes beyond the scope of this post to explain that all in detail.
 
-[![image](images/image_thumb_10.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image_10.png)You might already have noticed that the entry file as defined in the webpack config does not yet exist. Let’s create one in the ‘Client/js’ folder as main.js (together with ‘Client/css/site.css’ for some custom styles). The file ‘Client/js/main.js’ contains:
+![image](./images/image_thumb_10.png "image"). The file ‘Client/js/main.js’ contains:
 
 ```
 import '../css/site.css';
@@ -262,7 +262,7 @@ npm start
 
 After having created the bundle with one of the above commands we see this when we run the application:
 
-[![image](images/image_thumb_11.png "image")](https://blogs.taiga.nl/martijn/wp-content/uploads/075ef9bb206a_D342/image_11.png)
+![image](./images/image_thumb_11.png "image")
 
 Looks like Bootstrap doesn’t it? :)
 

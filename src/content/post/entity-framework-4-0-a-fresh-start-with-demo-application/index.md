@@ -11,7 +11,7 @@ tags:
 
 Edited 2009-11-26: removed EF4 Feature CTP from demo package and added some code examples.
 
-So, [Entity Framework 1.0 pretty much sucks](https://blogs.taiga.nl/martijn/2009/09/24/one-year-after-the-entity-framework-vote-of-no-confidence/) (compared to alternatives), but I’m glad to see that things have improved a lot in version 4.0 (we’ll call that EF4 from now). To see how the improvements work out, I did a quick [spike](https://blogs.taiga.nl/martijn/wp-content/uploads/EF4Demo.zip) that also gave me the opportunity to test some new ASP.NET MVC 2 features that I might blog about later.
+So, Entity Framework 1.0 pretty much sucks](https://blogs.taiga.nl/martijn/2009/09/24/one-year-after-the-entity-framework-vote-of-no-confidence/) (compared to alternatives), but I’m glad to see that things have improved a lot in version 4.0 (we’ll call that EF4 from now). To see how the improvements work out, I did a quick [spike that also gave me the opportunity to test some new ASP.NET MVC 2 features that I might blog about later.
 
 ### What’s in it?
 
@@ -200,7 +200,7 @@ public class TeachersController : Controller
 
 ### The demo app
 
-You can [download the demo](https://blogs.taiga.nl/martijn/wp-content/uploads/EF4Demo.zip) to see what’s possible. It’s by no means a best practices example. Just a spike to test out various new technologies.
+You can download the demo to see what’s possible. It’s by no means a best practices example. Just a spike to test out various new technologies.
 
 To run the demo, you’ll need Visual Studio 2010 Beta 2, [the latest EF4 Feature CTP](http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=13fdfce4-7f92-438f-8058-b5b4041d0f01) and SQL Server (Express).
 

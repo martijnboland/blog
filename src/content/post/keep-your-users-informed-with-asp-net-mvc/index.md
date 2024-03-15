@@ -11,7 +11,7 @@ tags:
 
 In almost every application, feedback from the application to the user via notification messages is required.
 
-[![success](images/success_thumb.png "success")](https://blogs.taiga.nl/martijn/wp-content/uploads/2011/05/success.png)
+![success](./images/success_thumb.png "success")
 
 For some strange reason, we don’t have a standard way in .NET web applications for dealing with this kind of messages and I find myself hacking some half-baked solutions over and over again. Starting from today, this must end! In this post we’re going to find a solution for ASP.NET MVC 3.
 
@@ -119,7 +119,7 @@ public class AjaxMessagesFilter : ActionFilterAttribute
 }
 ```
 
-[![x-message](images/x-message_thumb.png "x-message")](https://blogs.taiga.nl/martijn/wp-content/uploads/2011/05/x-message.png)
+![x-message](./images/x-message_thumb.png "x-message")
 
 Finally the message in the HTTP headers are displayed with a little bit of jQuery:
 
