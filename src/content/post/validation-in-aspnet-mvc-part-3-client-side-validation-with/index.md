@@ -13,8 +13,8 @@ tags:
 
 This is part 3 of a series of posts. See also:
 
-- [Validation in ASP.NET MVC - part 1: basic server-side validation](https://blogs.taiga.nl/martijn/2008/11/26/validation-in-asp.net-mvc-part-1-basic-server-side-validation)
-- [Validation in ASP.NET MVC - part 2: custom server-side validation](https://blogs.taiga.nl/martijn/2008/11/27/validation-in-asp.net-mvc-part-2-custom-server-side-validation)
+- [Validation in ASP.NET MVC - part 1: basic server-side validation](../validation-in-asp.net-mvc-part-1-basic-server-side-validation)
+- [Validation in ASP.NET MVC - part 2: custom server-side validation](../validation-in-asp.net-mvc-part-2-custom-server-side-validation)
 
 In the first two parts, I showed how you can perform validation on the server side with Castle Validation attributes and extend that model with custom validation logic. With this, we have everything we need to properly validate our model.
 

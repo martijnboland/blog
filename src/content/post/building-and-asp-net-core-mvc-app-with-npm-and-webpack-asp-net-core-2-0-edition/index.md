@@ -1,5 +1,5 @@
 ---
-title: "Building the minimal ASP.NET Core MVC app with NPM and webpack &ndash; the 2.0 edition"
+title: "Building the minimal ASP.NET Core MVC app with NPM and webpack - the 2.0 edition"
 date: "2017-11-24"
 categories: 
   - "net-core"
@@ -12,7 +12,7 @@ tags:
 
 ![image](./images/image_thumb.png "image")
 
-_Update: ASP.NET Core 2.1 and webpack 4 are released. I've written a new post, [Lean ASP.NET Core 2.1 - manually setup a Razor Pages project with Bootstrap, NPM and webpack](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/)._
+_Update: ASP.NET Core 2.1 and webpack 4 are released. I've written a new post, [Lean ASP.NET Core 2.1 - manually setup a Razor Pages project with Bootstrap, NPM and webpack](../lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/)._
 
 A while ago I wrote about [building an ASP.NET Core MVC app with NPM and webpack](https://blogs.taiga.nl/martijn/?p=1703).  Since then, [ASP.NET Core 2.0 was released](https://blogs.msdn.microsoft.com/webdev/2017/08/14/announcing-asp-net-core-2-0/). Compared with ASP.NET Core 1.x, things have become easier, especially configuration. Quite a few settings that had to be added manually before are now the default. This post is an update of the [previous post](https://blogs.taiga.nl/martijn/?p=1703) that is compatible with ASP.NET Core 2.0.
 

@@ -10,7 +10,7 @@ tags:
   - "webpack"
 ---
 
-_Update: this post is written using ASP.NET Core 1.1. With ASP.NET Core 2.0, things have gotten easier. [See the updated version of this post for ASP.NET Core 2.0](https://blogs.taiga.nl/martijn/2017/11/24/building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/)._
+_Update: this post is written using ASP.NET Core 1.1. With ASP.NET Core 2.0, things have gotten easier. [See the updated version of this post for ASP.NET Core 2.0](../building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/)._
 
 ![image](./images/image_thumb.png "image")
 

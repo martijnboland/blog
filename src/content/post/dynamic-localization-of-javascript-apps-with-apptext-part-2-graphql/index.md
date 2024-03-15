@@ -15,10 +15,10 @@ tags:
 
 This post is part of a series of post about AppText, a Content Management System for applications. Earlier posts:
 
-- [Easy ASP.NET Core localization with AppText](https://blogs.taiga.nl/martijn/2020/08/03/easy-asp-net-core-localization-with-apptext/)
-- [Dynamic localization of JavaScript apps with AppText](https://blogs.taiga.nl/martijn/2020/10/29/dynamic-localization-of-javascript-apps-with-apptext-and-i18next/)
+- [Easy ASP.NET Core localization with AppText](../easy-asp-net-core-localization-with-apptext/)
+- [Dynamic localization of JavaScript apps with AppText](../dynamic-localization-of-javascript-apps-with-apptext-and-i18next/)
 
-In the [previous post](https://blogs.taiga.nl/martijn/2020/10/29/dynamic-localization-of-javascript-apps-with-apptext-and-i18next/) we translated labels and messages in a JavaScript example application with i18next. AppText covers this with the built-in ‘Translation’ content type that simply has a single field: ‘text’.
+In the [previous post](../dynamic-localization-of-javascript-apps-with-apptext-and-i18next/) we translated labels and messages in a JavaScript example application with i18next. AppText covers this with the built-in ‘Translation’ content type that simply has a single field: ‘text’.
 
 Sometimes however, applications have the need for more sophisticated content, for example, in help or information pages. These pages contain multiple paragraphs, require formatting and perhaps contain links to other pages. For these scenarios, just having a singe field ‘text’ simply won’t cut it anymore.
 
@@ -250,4 +250,4 @@ You can see that the LanguageSelector component also uses i18next (via the useTr
 
 ### Try it yourself
 
-All code in this and the [previous](https://blogs.taiga.nl/martijn/2020/10/29/dynamic-localization-of-javascript-apps-with-apptext-and-i18next/) post is on GitHub. You can try it by cloning the [AppText repository](https://github.com/martijnboland/apptext). The JavaScript/React example is in the [/examples/javascriptreactexample](https://github.com/martijnboland/apptext/tree/main/examples/javascriptreactexample) folder and we have a [demo Docker container](https://hub.docker.com/r/apptextio/apptext-demo) prepared as AppText backend for the example app.
+All code in this and the [previous](../dynamic-localization-of-javascript-apps-with-apptext-and-i18next/) post is on GitHub. You can try it by cloning the [AppText repository](https://github.com/martijnboland/apptext). The JavaScript/React example is in the [/examples/javascriptreactexample](https://github.com/martijnboland/apptext/tree/main/examples/javascriptreactexample) folder and we have a [demo Docker container](https://hub.docker.com/r/apptextio/apptext-demo) prepared as AppText backend for the example app.

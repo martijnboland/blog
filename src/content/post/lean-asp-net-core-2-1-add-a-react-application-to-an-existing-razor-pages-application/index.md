@@ -14,19 +14,19 @@ tags:
 
 _This post is part of a multi-post series:_
 
-1. _[Lean ASP.NET Core 2.1 – manually setup a Razor Pages project with Bootstrap, NPM and webpack](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/)_
+1. _[Lean ASP.NET Core 2.1 – manually setup a Razor Pages project with Bootstrap, NPM and webpack](../lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/)_
 2. _Lean ASP.NET Core 2.1 – add a React application to an existing Razor Pages application (this post)_
-3. [_Lean ASP NET Core 2.1 – React forms, validation and Web API integration_](https://blogs.taiga.nl/martijn/2018/08/13/lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/)
+3. [_Lean ASP NET Core 2.1 – React forms, validation and Web API integration_](../lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/)
 
-[![download](./images/download.png "download")](https://reactjs.org/)In the [previous post](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/), I showed how to manually build a simple, lean, ASP.NET Core 2.1 Razor Pages application that uses [webpack](http://webpack.js.org) to bundle client scripts and css styles. As promised, in this post, we’ll add a very small [React](https://reactjs.org/) JavaScript app to the already [existing Razor Pages application](https://github.com/martijnboland/LeanAspNetCore). Again, for the impatient, the source code for this post can be found at  [https://github.com/martijnboland/LeanAspNetCore-React](https://github.com/martijnboland/LeanAspNetCore-React "https://github.com/martijnboland/LeanAspNetCore-React").
+[![download](./images/download.png "download")](https://reactjs.org/)In the [previous post](../lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/), I showed how to manually build a simple, lean, ASP.NET Core 2.1 Razor Pages application that uses [webpack](http://webpack.js.org) to bundle client scripts and css styles. As promised, in this post, we’ll add a very small [React](https://reactjs.org/) JavaScript app to the already [existing Razor Pages application](https://github.com/martijnboland/LeanAspNetCore). Again, for the impatient, the source code for this post can be found at  [https://github.com/martijnboland/LeanAspNetCore-React](https://github.com/martijnboland/LeanAspNetCore-React "https://github.com/martijnboland/LeanAspNetCore-React").
 
-#### Adding React, but how?
+### Adding React, but how?
 
 For new React applications, [create-react-app](https://github.com/facebook/create-react-app) is the way to go. It will conveniently generate much of the required build infrastructure (such as the webpack configuration and a development server). However, we already have our build infrastructure in place, so in our scenario it’s easier to just add some libraries and extend the webpack configuration manually. Plus, and that’s a _big_ plus in my opinion, we’re still totally flexible and in charge.
 
-#### Let’s do it!
+### Let’s do it!
 
-Before adding the React app, we first have to re-organize our existing application a little bit. The webpack configuration from our [previous post](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/) creates a single JavaScript bundle that also includes jQuery and the Bootstrap JavaScript where we only need the Bootstrap css (and React, of course) for our React app. So, we split our bundles into a main bundle that is used in all pages and a bundle for the jQuery-Bootstrap scripts that is only used by the ‘classic’ server-side pages. This can be done by adding a new ‘classic\_jquery’ entry in webpack.config.js:
+Before adding the React app, we first have to re-organize our existing application a little bit. The webpack configuration from our [previous post](../lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/) creates a single JavaScript bundle that also includes jQuery and the Bootstrap JavaScript where we only need the Bootstrap css (and React, of course) for our React app. So, we split our bundles into a main bundle that is used in all pages and a bundle for the jQuery-Bootstrap scripts that is only used by the ‘classic’ server-side pages. This can be done by adding a new ‘classic\_jquery’ entry in webpack.config.js:
 
 ```
 entry: {
@@ -98,7 +98,7 @@ Also, the master layout page (/Pages/Shared/\_Layout.cshtml) must get a scripts 
 
 We set this nested layout page as the default in \_ViewStart.cshtml so all Razor pages reference the main.js _and_ classic\_jquery.js bundles but it’s also possible to only reference the main.js bundle by manually setting \_Layout.cshtml as the layout for the page.
 
-#### Manually adding the React app
+### Manually adding the React app
 
 The React app we’re adding will become an app for taking notes. However, in this post we stick to a simple ‘Hello world’. The actual notes app is for the next post in this series.
 
@@ -192,11 +192,11 @@ The React app we’re adding will become an app for taking notes. However, in th
     
     Whoops, looks like something is missing. Webpack has an issue with the <App /> component, which is totally understandable because that is the React-specific [JSX](http://buildwithreact.com/tutorial/jsx) syntax and we haven’t done anything yet to let webpack know how to handle that.
 
-#### And now?
+### And now?
 
 Most tutorials suggest to use [Babel](https://babeljs.io/) and the [babel-loader](https://github.com/babel/babel-loader) for webpack, for example [this one](https://www.valentinog.com/blog/react-webpack-babel/), but the great thing is that the [TypeScript](https://www.typescriptlang.org/) compiler also [understands the React JSX syntax](https://www.typescriptlang.org/docs/handbook/jsx.html). Personally, I think TypeScript in combination with React simply works brilliantly. For example, it’s not unusual to mistype a property name of a React component, resulting in a debugging session. By typing your props, the compiler finds all typos and when using an editor like Visual Studio Code, you even get intellisense for you React components.
 
-#### Adding TypeScript
+### Adding TypeScript
 
 1. Add TypeScript, a TypeScript loader for webpack and the React TypeScript type definitions. We’re using the [awesome-typescript-loader](https://github.com/s-panferov/awesome-typescript-loader) for webpack because the other common option, [ts-loader](https://github.com/TypeStrong/ts-loader), had an issue with TypeScript 2.9.2 at the time of writing. In the /ClientApp folder run:
     

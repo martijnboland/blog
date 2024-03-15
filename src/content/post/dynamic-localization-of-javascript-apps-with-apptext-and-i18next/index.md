@@ -162,4 +162,4 @@ Note that the keys for the translations are in natural language, but we could ju
 
 ### What about complex content?
 
-Sometimes, we want to display more complex content in our applications, for example, help or information pages.  Can we use i18next for those as well? In theory, yes, but with AppText we have more options with custom content types and the GraphQL API. That’s something we’ll cover in the [next post](https://blogs.taiga.nl/martijn/2020/11/02/dynamic-localization-of-javascript-apps-with-apptext-part-2-graphql/).
+Sometimes, we want to display more complex content in our applications, for example, help or information pages.  Can we use i18next for those as well? In theory, yes, but with AppText we have more options with custom content types and the GraphQL API. That’s something we’ll cover in the [next post](../dynamic-localization-of-javascript-apps-with-apptext-part-2-graphql/).

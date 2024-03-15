@@ -8,4 +8,4 @@ tags:
   - "paging"
 ---
 
-The sample project that belongs to the Paging with ASP.NET MVC post](https://blogs.taiga.nl/martijn/2008/08/27/paging-with-aspnet-mvc/) is upgraded to ASP.NET MVC RC. [Get it from here.
+The sample project that belongs to the Paging with ASP.NET MVC post](../paging-with-aspnet-mvc/) is upgraded to ASP.NET MVC RC. [Get it from here.

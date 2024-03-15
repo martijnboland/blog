@@ -24,9 +24,9 @@ Vite is a new build tool for client-side JavaScript and Css. It replaces webpack
 
 ### Where do we come from?
 
-In the past years, I’ve been using [ASP.NET Core SpaServices](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa-services) together with [webpack](https://webpack.js.org/) to build full-stack web applications with relatively light-weight tooling. I’ve written about it back then in [this](https://blogs.taiga.nl/martijn/2018/06/14/lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/) [blog](https://blogs.taiga.nl/martijn/2018/06/22/lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/) [series](https://blogs.taiga.nl/martijn/2018/08/13/lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/).
+In the past years, I’ve been using [ASP.NET Core SpaServices](https://docs.microsoft.com/en-us/aspnet/core/client-side/spa-services) together with [webpack](https://webpack.js.org/) to build full-stack web applications with relatively light-weight tooling. I’ve written about it back then in [this](../lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/) [blog](../lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/) [series](../lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/).
 
-However, it’s 2021 and things have moved on: [SpaServices is deprecated](https://blogs.taiga.nl/martijn/2019/10/11/goodbye-spaservices-it-was-fun-while-it-lasted/) and new client side build tools such as [Vite](https://vitejs.dev/) and [Snowpack](https://www.snowpack.dev/) have entered the stage. These new tools leverage the ability of modern browsers to natively load ES modules to get rid of the time-consuming bundling that is required at development time with webpack. Time to upgrade our tooling!
+However, it’s 2021 and things have moved on: [SpaServices is deprecated](../goodbye-spaservices-it-was-fun-while-it-lasted/) and new client side build tools such as [Vite](https://vitejs.dev/) and [Snowpack](https://www.snowpack.dev/) have entered the stage. These new tools leverage the ability of modern browsers to natively load ES modules to get rid of the time-consuming bundling that is required at development time with webpack. Time to upgrade our tooling!
 
 ### Introducing Vite
 

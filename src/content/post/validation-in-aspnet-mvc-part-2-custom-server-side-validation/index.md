@@ -11,7 +11,7 @@ tags:
 
 This is a post in a series of posts. See also:
 
-- [Validation in ASP.NET MVC - part 1: basic server-side validation](https://blogs.taiga.nl/martijn/2008/11/26/validation-in-asp.net-mvc-part-1-basic-server-side-validation)
+- [Validation in ASP.NET MVC - part 1: basic server-side validation](../validation-in-asp.net-mvc-part-1-basic-server-side-validation)
 
 In the first post of this series, I showed how you can perform basic server-side validation on your model with help of the [Castle Validator component](http://hammett.castleproject.org/?p=114). To summarize this post: the controller validates an object that is decorated with validation attributes with the help of an IModelValidator component and adds errors to the ModelState.
 

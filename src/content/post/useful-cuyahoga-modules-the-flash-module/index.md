@@ -1,5 +1,5 @@
 ---
-title: "Useful Cuyahoga Modules &ndash; The Flash module"
+title: "Useful Cuyahoga Modules - The Flash module"
 date: "2009-04-23"
 categories: 
   - "cuyahoga"

@@ -11,7 +11,7 @@ tags:
 
 Edited 2009-11-26: removed EF4 Feature CTP from demo package and added some code examples.
 
-So, Entity Framework 1.0 pretty much sucks](https://blogs.taiga.nl/martijn/2009/09/24/one-year-after-the-entity-framework-vote-of-no-confidence/) (compared to alternatives), but I’m glad to see that things have improved a lot in version 4.0 (we’ll call that EF4 from now). To see how the improvements work out, I did a quick [spike that also gave me the opportunity to test some new ASP.NET MVC 2 features that I might blog about later.
+So, Entity Framework 1.0 pretty much sucks](../one-year-after-the-entity-framework-vote-of-no-confidence/) (compared to alternatives), but I’m glad to see that things have improved a lot in version 4.0 (we’ll call that EF4 from now). To see how the improvements work out, I did a quick [spike that also gave me the opportunity to test some new ASP.NET MVC 2 features that I might blog about later.
 
 ### What’s in it?
 

@@ -1,5 +1,5 @@
 ---
-title: "JavaScript for .NET developers &ndash; September 2016 edition"
+title: "JavaScript for .NET developers - September 2016 edition"
 date: "2016-09-22"
 categories: 
   - "net"
@@ -14,7 +14,7 @@ tags:
 
 For .NET developers coming from the safe environment of Visual Studio and C#, the wild west that is the current JavaScript landscape can be very intimidating and confusing. Hopefully, this post will provide a little bit of guidance for your journey into this wild west.
 
-Disclaimer: this post reflects my personal experiences from the last 1.5 years since the [previous post](https://blogs.taiga.nl/martijn/2015/03/04/javascript-for-net-developers-march-2015-edition/) I wrote about this subject might and be a bit subjective. Feel free to comment!
+Disclaimer: this post reflects my personal experiences from the last 1.5 years since the [previous post](../javascript-for-net-developers-march-2015-edition/) I wrote about this subject might and be a bit subjective. Feel free to comment!
 
 _**tl;dr**_
 

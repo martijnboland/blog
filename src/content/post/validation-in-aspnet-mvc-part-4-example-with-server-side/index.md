@@ -12,9 +12,9 @@ tags:
 
 This is part 4 of a series of posts. See also:
 
-- [Validation in ASP.NET MVC - part 1: basic server-side validation](https://blogs.taiga.nl/martijn/2008/11/26/validation-in-asp.net-mvc-part-1-basic-server-side-validation)
-- [Validation in ASP.NET MVC - part 2: custom server-side validation](https://blogs.taiga.nl/martijn/2008/11/27/validation-in-asp.net-mvc-part-2-custom-server-side-validation)
-- [Validation in ASP.NET MVC - part 3: client-side validation with jQuery validation](https://blogs.taiga.nl/martijn/2008/12/08/validation-in-asp.net-mvc-part-3-client-side-validation-with)
+- [Validation in ASP.NET MVC - part 1: basic server-side validation](../validation-in-asp.net-mvc-part-1-basic-server-side-validation)
+- [Validation in ASP.NET MVC - part 2: custom server-side validation](../validation-in-asp.net-mvc-part-2-custom-server-side-validation)
+- [Validation in ASP.NET MVC - part 3: client-side validation with jQuery validation](../validation-in-asp.net-mvc-part-3-client-side-validation-with)
 
 In the previous posts, I described how we implemented model-based validation on the server-side in [Cuyahoga](http://cuyahoga-project.org) with ASP.NET MVC and as the icing on the cake, we also added some client-side validation (also model-based).
 

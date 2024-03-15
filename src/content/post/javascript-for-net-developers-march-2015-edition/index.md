@@ -1,5 +1,5 @@
 ---
-title: "JavaScript for .NET Developers &ndash; March 2015 edition"
+title: "JavaScript for .NET Developers - March 2015 edition"
 date: "2015-03-04"
 categories: 
   - "net"
@@ -20,7 +20,7 @@ The last couple of years, many .NET developers are making a gradual shift from d
 - 2011-2012: **KnockoutJS** jQuery spaghetti becomes unmanageable but luckily, Steve Sanderson ports the MVVM concept from WPF and Silverlight and we can build proper client-side apps. At one time, [KnockoutJS](http://knockoutjs.com/) was even part of standard Visual Studio templates
 - 2012-2013: **Durandal** Based on KnockoutJS and RequireJS, Rob Eisenberg (of Caliburn fame) creates [Durandal](http://durandaljs.com/), which is a complete framework. Now we have a one-stop shop for all our needs. No hassle with 3rd party libs for routing etc. anymore.
 - 2014: **AngularJS** Some influential .NET people have discovered [Angular](https://angularjs.org/). Two-way binding without those pesky observables and it’s backed by a real big company. Hurray! Even Durandal creator Rob Eisenberg joins the Angular team, so that must really be the best thing since bread came sliced.
-- 2015: **Unkown** _Wait, whut?!_ In october 2014, AngularJS 2.0 was announced as a being non-compatible with the current 1.x version and a month later, Rob Eisenberg announced that he’s left the Angular team. BOOM!!! Suddenly, AngularJS [wasn’t the coolest kid in town anymore](https://blogs.taiga.nl/martijn/2014/10/31/angular-is-the-new-uncool/) and the .NET/JavaScript community is kind of left in the dark where to go now.
+- 2015: **Unkown** _Wait, whut?!_ In october 2014, AngularJS 2.0 was announced as a being non-compatible with the current 1.x version and a month later, Rob Eisenberg announced that he’s left the Angular team. BOOM!!! Suddenly, AngularJS [wasn’t the coolest kid in town anymore](../angular-is-the-new-uncool/) and the .NET/JavaScript community is kind of left in the dark where to go now.
 
 ### The Framework Vacuum
 

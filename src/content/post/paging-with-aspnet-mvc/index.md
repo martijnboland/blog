@@ -8,11 +8,11 @@ tags:
   - "paging"
 ---
 
-_Updated 2012-04-23: Version 2.0: [https://blogs.taiga.nl/martijn/2012/04/23/mvcpaging-2-0/](https://blogs.taiga.nl/martijn/2012/04/23/mvcpaging-2-0/)_
+_Updated 2012-04-23: Version 2.0: [https://blogs.taiga.nl/martijn/2012/04/23/mvcpaging-2-0/](../mvcpaging-2-0/)_
 
-_Updated 2011-05-12: Added NuGet package: [https://blogs.taiga.nl/martijn/2011/05/12/nuget-package-for-mvc-pager/](https://blogs.taiga.nl/martijn/2011/05/12/nuget-package-for-mvc-pager/ "NuGet package for MVC pager")_
+_Updated 2011-05-12: Added NuGet package: [https://blogs.taiga.nl/martijn/2011/05/12/nuget-package-for-mvc-pager/](../nuget-package-for-mvc-pager/ "NuGet package for MVC pager")_
 
-_Updated 2011-03-22: Changed download link: [https://github.com/martijnboland/MvcPaging](https://github.com/martijnboland/MvcPaging). See also [https://blogs.taiga.nl/martijn/2011/03/23/mvc-pager-update-now-with-ajax-support/](https://blogs.taiga.nl/martijn/2011/03/23/mvc-pager-update-now-with-ajax-support/ "https://blogs.taiga.nl/martijn/2011/03/23/mvc-pager-update-now-with-ajax-support/")_
+_Updated 2011-03-22: Changed download link: [https://github.com/martijnboland/MvcPaging](https://github.com/martijnboland/MvcPaging). See also [https://blogs.taiga.nl/martijn/2011/03/23/mvc-pager-update-now-with-ajax-support/](../mvc-pager-update-now-with-ajax-support/ "https://blogs.taiga.nl/martijn/2011/03/23/mvc-pager-update-now-with-ajax-support/")_
 
 _Updated 2009-02-04: Upgraded source and demo to ASP.NET MVC RC1_
 

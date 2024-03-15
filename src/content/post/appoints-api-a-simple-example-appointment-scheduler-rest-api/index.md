@@ -1,5 +1,5 @@
 ---
-title: "Appoints-Api &ndash; A simple example appointment scheduler REST API"
+title: "Appoints-Api - A simple example appointment scheduler REST API"
 date: "2014-05-28"
 categories: 
   - "javascript"

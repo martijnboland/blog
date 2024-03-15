@@ -10,7 +10,7 @@ tags:
   - "javascript"
 ---
 
-**Update feb 2015:** Things are moving fast. Rob Eisenberg has left the Angular team and is now working on [Aurelia](http://aurelia.io/). In the meanwhile, the Angular team announced that version 2.0 will be pretty different from the current 1.x version. See also [this post](https://blogs.taiga.nl/martijn/2014/10/31/angular-is-the-new-uncool/ "Angular is the new uncool?").
+**Update feb 2015:** Things are moving fast. Rob Eisenberg has left the Angular team and is now working on [Aurelia](http://aurelia.io/). In the meanwhile, the Angular team announced that version 2.0 will be pretty different from the current 1.x version. See also [this post](../angular-is-the-new-uncool/ "Angular is the new uncool?").
 
 **Update may 2014:** Rob Eisenberg, the creator of Durandal has joined the Angular team to build Angular 2.0, see [http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/](http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/ "http://eisenbergeffect.bluespire.com/angular-and-durandal-converge/"). This makes this post kind of obsolete. Angular is the safe choice for the future. I wouldn’t start any new projects based on Durandal 2.x anymore.
 
@@ -18,7 +18,7 @@ tags:
 
 [![durandal-240](./images/durandal-240.png "durandal-240")](http://durandaljs.com/)[![angular-240](./images/angular-240.png "angular-240")](http://angularjs.org)
 
-As promised in [my previous post](https://blogs.taiga.nl/martijn/2013/12/05/moped-a-web-client-for-the-mopidy-music-server/), I’ve also built an [AngularJS](http://angularjs.org) version of the [Moped](https://github.com/martijnboland/moped/tree/durandal-vs-angular) web client for [Mopidy](http://mopidy.com). Moped is an HTML 5 music player app that uses Web Sockets to communicate with the Mopidy music server.
+As promised in [my previous post](../moped-a-web-client-for-the-mopidy-music-server/), I’ve also built an [AngularJS](http://angularjs.org) version of the [Moped](https://github.com/martijnboland/moped/tree/durandal-vs-angular) web client for [Mopidy](http://mopidy.com). Moped is an HTML 5 music player app that uses Web Sockets to communicate with the Mopidy music server.
 
 ![moped-all-720](./images/moped-all-720_thumb.png "moped-all-720")
 

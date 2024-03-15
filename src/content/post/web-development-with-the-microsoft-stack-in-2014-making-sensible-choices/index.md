@@ -1,5 +1,5 @@
 ---
-title: "Web Development on the Microsoft stack in 2014 &ndash; making sensible choices"
+title: "Web Development on the Microsoft stack in 2014 - making sensible choices"
 date: "2014-10-24"
 categories: 
   - "net"

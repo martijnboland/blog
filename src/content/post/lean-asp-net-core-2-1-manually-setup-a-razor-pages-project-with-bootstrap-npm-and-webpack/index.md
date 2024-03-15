@@ -1,5 +1,5 @@
 ---
-title: "Lean ASP.NET Core 2.1 &ndash; manually setup a Razor Pages project with Bootstrap, NPM and webpack"
+title: "Lean ASP.NET Core 2.1 - manually setup a Razor Pages project with Bootstrap, NPM and webpack"
 date: "2018-06-14"
 categories: 
   - "net-core"
@@ -17,16 +17,16 @@ tags:
 _This post is part of a multi-post series:_
 
 1. _Lean ASP.NET Core 2.1 – manually setup a Razor Pages project with Bootstrap, NPM and webpack (this post)_
-2. [_Lean ASP.NET Core 2.1 – add a React application to an existing Razor Pages application_](https://blogs.taiga.nl/martijn/2018/06/22/lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/)
-3. [_Lean ASP NET Core 2.1 – React forms, validation and Web API integration_](https://blogs.taiga.nl/martijn/2018/08/13/lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/)
+2. [_Lean ASP.NET Core 2.1 – add a React application to an existing Razor Pages application_](../lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/)
+3. [_Lean ASP NET Core 2.1 – React forms, validation and Web API integration_](../lean-asp-net-core-2-1-react-forms-validation-and-web-api-integration/)
 
 [![aspnetcore-logo-591x360](./images/aspnetcore-logo-591x360_thumb.png "aspnetcore-logo-591x360")](https://asp.net)
 
-In the past, I have written about setting up a minimal ASP.NET Core MVC application with NPM and webpack ([ASP.NET Core 1.1 version](https://blogs.taiga.nl/martijn/2017/08/02/building-the-minimal-asp-net-core-app-with-webpack-and-npm/), [ASP.NET Core 2.0 version](https://blogs.taiga.nl/martijn/2017/11/24/building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/)). These posts were mainly inspired by some unfortunate choices that had been made in the default Visual Studio project templates.
+In the past, I have written about setting up a minimal ASP.NET Core MVC application with NPM and webpack ([ASP.NET Core 1.1 version](../building-the-minimal-asp-net-core-app-with-webpack-and-npm/), [ASP.NET Core 2.0 version](../building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/)). These posts were mainly inspired by some unfortunate choices that had been made in the default Visual Studio project templates.
 
 I tried to show an alternative way to manually setup an ASP.NET MVC project and use ‘modern’ commonly-used  tools like [webpack](https://webpack.js.org/) and [NPM](https://www.npmjs.com/) to create a simple ASP.NET MVC application with [jQuery](https://jquery.com/) and [Bootstrap](https://getbootstrap.com/) for some client-side juice.
 
-#### But isn’t this modern web development where everything changes all the time?
+ But isn’t this modern web development where everything changes all the time?
 
 [![webpack](./images/webpack_thumb.png "webpack")](https://webpack.js.org)Yes :-). Fast-forward a few months and we’re in quite a different situation:
 
@@ -34,7 +34,7 @@ I tried to show an alternative way to manually setup an ASP.NET MVC project and 
 - The ASP.NET Core templates are improved significantly. Gone are Bower and things like bundleconfig.json. The simple templates just include the actual .js and .css files without requiring a package manager and the more complex SPA templates (angular, react) use NPM and webpack;
 - Webpack 4 is released with more carefully chosen default settings, so less configuration is required;
 
-#### So ditch the manual setup and pick a template?
+### So ditch the manual setup and pick a template?
 
 Yes and no. In more situations than before, the default templates will now probably suffice, but on the other hand, I feel there’s something missing between the simple templates and the complex SPA templates.
 
@@ -42,9 +42,9 @@ Yes and no. In more situations than before, the default templates will now proba
 
 However, in this post I’ll show how easy it is to cover this middle ground with a manual setup. Starting with a simple template and manually add everything else step by step. I’m calling this a ‘lean’ application because we’re only adding the minimal required parts, but with keeping all options open for future extensions.
 
-#### Building a ‘lean’ ASP.NET Core 2.1 application
+### Building a ‘lean’ ASP.NET Core 2.1 application
 
-Just like in the [previous](https://blogs.taiga.nl/martijn/2017/08/02/building-the-minimal-asp-net-core-app-with-webpack-and-npm/) [posts](https://blogs.taiga.nl/martijn/2017/11/24/building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/), we’re building a basic ASP.NET Core app with a home page  that is styled with Bootstrap from NPM, built with webpack and can be deployed to production environments. For the impatient: get the source code at [https://github.com/martijnboland/LeanAspNetCore](https://github.com/martijnboland/LeanAspNetCore "https://github.com/martijnboland/LeanAspNetCore") ;-).
+Just like in the [previous](../building-the-minimal-asp-net-core-app-with-webpack-and-npm/) [posts](../building-and-asp-net-core-mvc-app-with-npm-and-webpack-asp-net-core-2-0-edition/), we’re building a basic ASP.NET Core app with a home page  that is styled with Bootstrap from NPM, built with webpack and can be deployed to production environments. For the impatient: get the source code at [https://github.com/martijnboland/LeanAspNetCore](https://github.com/martijnboland/LeanAspNetCore "https://github.com/martijnboland/LeanAspNetCore") ;-).
 
 Prerequisites:
 
@@ -55,7 +55,7 @@ Prerequisites:
 
 Since ‘_lean’_ is our objective we’re keeping it simple and don’t use our heavyweight friend Visual Studio but stick to the command line and a text editor. Everything works fine on Mac OS too.
 
-#### First steps
+### First steps
 
 1. Create a new empty ASP.NET Core project based on the webapi template. This project template serves as a nice clean starting point that has appSettings.json etc. setup but not too much garbage that needs to be deleted anyway:
     
@@ -84,7 +84,7 @@ Since ‘_lean’_ is our objective we’re keeping it simple and don’t use ou
 
 It works but it does look a bit basic don’t you think?
 
-#### Styles, scripts and bundling
+### Styles, scripts and bundling
 
 To make things look a bit less basic we’ll just add some Bootstrap styles. But also, it’s time to setup our client-side build infrastructure.
 
@@ -198,7 +198,7 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
 
 That’s it! With a few steps we added Bootstrap from NPM and we’re able to include it in our application with the help of webpack.
 
-#### Automate all the things
+### Automate all the things
 
 Having to execute ‘npm run build’ every time you want to see the results of a small change is getting tedious pretty fast . Luckily, ASP.NET Core already contains webpack development middleware (in Microsoft.AspNetCore.SpaServices.Webpack) that watches your client files and automatically rebuilds the bundle when a change happens. Change the Configure method in Startup.cs to:
 
@@ -240,7 +240,7 @@ dotnet watch run
 
 From now on, every time a file changes, either the server executable or the client bundle is rebuilt automatically. To see the effect, change the background color in ClientApp/styles/style.css, hit save and watch the browser.
 
-#### Going live
+### Going live
 
 One of the goals of this exercise is to create an optimized production-ready version of our application with a _single_ command: ‘dotnet publish’.
 
@@ -382,10 +382,10 @@ Navigate to the publish output folder (/bin/Debug/netcoreapp2.1/publish), run th
 
 Have a look at the page source in the browser and if things went right, you’ll see that the optimized .css and .js files are loaded separately and that a version querystring is added for cache busting.
 
-#### Where to go from here?
+### Where to go from here?
 
 The project we just created can serve as a foundation for ‘classic’ server-side ASP.NET /jQuery-style projects, but we also have everything in place to create a Single Page App or a hybrid variant.
 
 An example of the first option can be found in the [GitHub repository](https://github.com/martijnboland/LeanAspNetCore) that contains the code for this post where an extra [Form page](https://github.com/martijnboland/LeanAspNetCore/blob/master/Pages/Form.cshtml) is added with jQuery unobtrusive validation.
 
-The [next post](https://blogs.taiga.nl/martijn/2018/06/22/lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/) will be an example of the second option as we add a mini [React](https://reactjs.org/) application to this project.
+The [next post](../lean-asp-net-core-2-1-add-a-react-application-to-an-existing-razor-pages-application/) will be an example of the second option as we add a mini [React](https://reactjs.org/) application to this project.

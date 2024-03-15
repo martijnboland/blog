@@ -27,6 +27,6 @@ We also have include the IPagedList for your convenience:
 
 ![image](./images/image_thumb7.png "image")
 
-For more info, check out [the original blogpost](https://blogs.taiga.nl/martijn/2008/08/27/paging-with-aspnet-mvc/) that started it or the [github project page](https://github.com/martijnboland/MvcPaging).
+For more info, check out [the original blogpost](../paging-with-aspnet-mvc/) that started it or the [github project page](https://github.com/martijnboland/MvcPaging).
 
 Enjoy!
