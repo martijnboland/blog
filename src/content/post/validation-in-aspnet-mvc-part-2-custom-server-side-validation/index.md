@@ -17,23 +17,11 @@ In the first post of this series, I showed how you can perform basic server-side
 
 The first reason to abstract the validator was to prevent coupling of MVC controllers to the Castle Validators. But the abstraction also provides a very nice extension point. We can inject any kind of validator into the controller constructor as long as it implements the IModelValidator interface:
 
-```
+```csharp
 public LoginController(IAuthenticationService authenticationService, IModelValidator<LoginViewData> modelValidator)
-```
-
-```
 {
-```
-
-```
     this._authenticationService = authenticationService;
-```
-
-```
     this.ModelValidator = modelValidator;
-```
-
-```
 }
 ```
 
@@ -47,91 +35,28 @@ In many scenario's, property validation with the generic CastleModelValidator<T>
 
 The CastleModelValidator<T> calls a virtual method PerformValidation() while validating via IsValid(). In UserModelValidator, this method is overriden and performs the check if the username is unique:
 
-```
+```csharp
 public class UserModelValidator : CastleModelValidator<User>
-```
-
-```
 {
-```
-
-```
     private readonly IUserService _userService;
-```
-
-```
     public UserModelValidator(IUserService userService)
-```
-
-```
     {
-```
-
-```
         _userService = userService;
-```
-
-```
     }
-```
-
-```
     protected override void PerformValidation(User objectToValidate, ICollection<string> includeProperties)
-```
-
-```
     {
-```
-
-```
         // First validate the property values via the Castle validator.
-```
-
-```
         base.PerformValidation(objectToValidate, includeProperties);
-```
-
-```
         // Check username uniqueness.
-```
-
-```
         if (ShouldValidateProperty("UserName", includeProperties)
-```
-
-```
             && ! String.IsNullOrEmpty(objectToValidate.UserName))
-```
-
-```
         {
-```
-
-```
             if (this._userService.FindUsersByUsername(objectToValidate.UserName).Count > 0)
-```
-
-```
             {
-```
-
-```
                 AddError("UserName", "UserNameValidatorNotUnique", true);
-```
-
-```
             }
-```
-
-```
         }
-```
-
-```
     }
-```
-
-```
 }
 ```
 
@@ -141,23 +66,11 @@ Because the modelvalidators are registered in the Windsor Container, we can inje
 
 We want the UsersController to use the custom UserModelValidator when ValidateModel() is called. All we have to do is to add UserModelValidator to the constructor of the controller and we're done:
 
-```
+```csharp
 public UsersController(IUserService userService, UserModelValidator userModelValidator)
-```
-
-```
 {
-```
-
-```
     this._userService = userService;
-```
-
-```
     this.ModelValidator = userModelValidator;
-```
-
-```
 }
 ```
 
@@ -169,35 +82,14 @@ Finally, this is how it looks in the browser. Nice to see the custom validation 
 
 In this post we've seen an example where we extended our CastleModelValidator<T> to perform custom logic by calling another service. You might as well call a method on the object itself that is validated to perform custom business logic:
 
-```
+```csharp
 protected override void PerformValidation(MyClass objectToValidate, ICollection<string> includeProperties)
-```
-
-```
 {
-```
-
-```
     base.PerformValidation(objectToValidate, includeProperties);
-```
-
-```
     if (! objectToValidate.CheckThatMyBizarreBusinessRuleIsValid())
-```
-
-```
     {
-```
-
-```
         AddError("MyProperty", "The object to validate is invalid.");
-```
-
-```
     }
-```
-
-```
 }
 ```
 

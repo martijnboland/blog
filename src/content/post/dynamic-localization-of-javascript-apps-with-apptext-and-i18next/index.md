@@ -42,8 +42,7 @@ The [i18next library](https://www.i18next.com/) is my weapon of choice when it c
 
 AppText comes with the Translations module that provides HTTP endpoints specifically tailored towards localization libraries. Configuring i18next to use AppText as backend for translations is super easy. We just use the [i18next-http-backend](https://github.com/i18next/i18next-http-backend) plugin. This is the i18next configuration of the example application:
 
-```
-[sourcecode language='javascript'  padlinenumbers='true']
+```js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
@@ -72,24 +71,19 @@ i18n
 
 
 export default i18n;
-[/sourcecode]
-
 ```
 
 This is a straightforward configuration for i18next in a React application.
 
 The AppText-specific part of the configuration above is in the **backend** property of the init() options:
 
-```
-[sourcecode language='javascript'  padlinenumbers='true']
+```js
 backend: {
   loadPath: `${appTextApiBaseUrl}/${appTextAppId}/translations/public/{{lng}}/{{ns}}`,
   customHeaders: {
     'X-Api-Key': appTextApiKey
   },
 }
-[/sourcecode]
-
 ```
 
 The **loadPath** property points to the AppText [Translations endpoint](https://apptext.io/docs/api-public#get-translations). To access this endpoint, an [ApiKey](https://apptext.io/docs/api-keys) is required.  We add this key with a custom HTTP Header **X-Api-Key**.
@@ -106,8 +100,7 @@ Below you can see how the variables relate to the AppText Admin interface.
 
 Displaying the translations in the components is straightforward i18next. In our example with use the useTranslation hook from the ‘react-i18next’ package. A nice example is the Notes list component:
 
-```
-[sourcecode language='javascript' ]
+```js
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Note } from './models';
@@ -140,18 +133,13 @@ const List: React.FC = ({ notes, onRemoveNote }) => {
 }
 
 export default List;
-[/sourcecode]
-
 ```
 
 The Notes component has two labels that are displayed with the i18next ‘t’ function that comes from the useTranslation hook:
 
-```
-[sourcecode language='javascript' ]
+```js
       {t('Notes')}
       {t('There are n notes', { count: notes.length })}
-[/sourcecode]
-
 ```
 
 In AppText, these translations are in the ‘labels’ collection:

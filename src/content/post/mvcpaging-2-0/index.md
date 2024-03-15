@@ -21,13 +21,13 @@ What’s new:
 
 There have been some requests for extra configuration options, but I didn’t want to add more overloads to the Html.Pager helper. Instead, the number of overloads is reduced drastically:
 
-```
+```csharp
 Html.Pager(int pageSize, int currentPage, int totalItemCount)
 ```
 
 and
 
-```
+```csharp
 Html.Pager(int pageSize, int currentPage, int totalItemCount, AjaxOptions ajaxOptions)
 ```
 
@@ -35,7 +35,7 @@ We now only have a method with the _required_ parameters and one overload for Aj
 
 Non-required configuration options are added via the Options() method. This interface also replaces the overloads in the previous version where you could set route values or controller actions. This is the second breaking change. You can now only set these values via the Options method.
 
-```
+```csharp
 Html.Pager(pageSize, pageNumber, totalItemCount).Options(o => o
     .Action("action")
     .AddRouteValue("q", mySearchQuery)
@@ -57,7 +57,7 @@ A few people have been asking for configurable rendering, especially since [Twit
 
 The [MvcPaging.Demo](https://github.com/martijnboland/MvcPaging/tree/master/src/MvcPaging.Demo) project has an example [DisplayTemplate](https://github.com/martijnboland/MvcPaging/tree/master/src/MvcPaging.Demo/Views/Shared/DisplayTemplates) that renders Html that is compatible with Twitter Bootstrap:
 
-```
+```csharp
 Html.Pager(pageSize, pageNumber, totalItemCount).Options(o => o
     .DisplayTemplate("BootstrapPagination")
     .MaxNrOfPages(14))

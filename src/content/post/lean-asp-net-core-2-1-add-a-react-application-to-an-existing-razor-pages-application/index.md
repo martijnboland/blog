@@ -28,7 +28,7 @@ For new React applications, [create-react-app](https://github.com/facebook/creat
 
 Before adding the React app, we first have to re-organize our existing application a little bit. The webpack configuration from our [previous post](../lean-asp-net-core-2-1-manually-setup-a-razor-pages-project-with-bootstrap-npm-and-webpack/) creates a single JavaScript bundle that also includes jQuery and the Bootstrap JavaScript where we only need the Bootstrap css (and React, of course) for our React app. So, we split our bundles into a main bundle that is used in all pages and a bundle for the jQuery-Bootstrap scripts that is only used by the ‘classic’ server-side pages. This can be done by adding a new ‘classic\_jquery’ entry in webpack.config.js:
 
-```
+```js
 entry: {
   main: './js/main.js',
   classic_jquery: './js/classic-jquery.js'
@@ -38,14 +38,14 @@ entry: {
 
 main.js is reduced to:
 
-```
+```js
 import '../styles/style.css';
 
 ```
 
 and classic-jquery.js contains:
 
-```
+```js
 import $ from 'jquery';
 
 import 'popper.js';
@@ -62,13 +62,11 @@ $.validator.setDefaults({
     $(element).removeClass("is-invalid");
   }
 });
-
-
 ```
 
 Normally, the new bundle would also be referenced from the Pages/Shared/\_Layout.cshtml layout page but in our case, we don’t want it in every page. This is solved by creating a new nested layout page (/Pages/Shared/\_Classic\_Layout.cshtml):
 
-```
+```html
 @{
     Layout = "_Layout";
 }
@@ -86,12 +84,11 @@ Normally, the new bundle would also be referenced from the Pages/Shared/\_Layout
 
     @RenderSection("scripts", required: false)
 }
-
 ```
 
 Also, the master layout page (/Pages/Shared/\_Layout.cshtml) must get a scripts section just before the </body> tag:
 
-```
+```csharp
 @RenderSection("scripts", required: false)
 
 ```
@@ -104,7 +101,7 @@ The React app we’re adding will become an app for taking notes. However, in th
 
 1. Add a new Razor page that will host the React app (/Pages/ReactNotes.cshtml):
     
-    ```
+    ```html
     @page
     @{
         Layout = "Shared/_Layout.cshtml";
@@ -122,28 +119,26 @@ The React app we’re adding will become an app for taking notes. However, in th
             <script src="~/dist/react_notes.js" asp-append-version="true"></script>
         </environment>
     }
-    
     ```
     
     As you can see, we override the default layout page and use the master layout page (that does not reference classic\_jquery.js), but we add a reference to a new bundle, ‘react\_notes.js’. This bundle will contain our complete React app that will be injected into the ‘react-notes-app’ div element.
 2. Add a link to the the React Notes page in the header (/Pages/Shared/\_Header.cshtml)
     
-    ```
+    ```html
     <li class="nav-item">
       <a class="nav-link" asp-page="ReactNotes">React Notes</a>
-    </li>
-    
+    </li>    
     ```
     
 3. From the command-line prompt, go to the /ClientApp folder and install React:
     
-    ```
+    ```bash
     npm install react react-dom --save
     ```
     
 4. Add the React JavaScript app code. It consists of the entry point, /ClientApp/js/react-notes.js:
     
-    ```
+    ```jsx
     import React from 'react';
     import ReactDOM from 'react-dom';
     
@@ -153,12 +148,11 @@ The React app we’re adding will become an app for taking notes. However, in th
       <App />,
       document.getElementById('react-notes-app')
     );
-    
     ```
     
     and the root App component, /ClientApp/js/react-notes/App.js
     
-    ```
+    ```jsx
     import React from 'react';
     
     const App = () => {
@@ -167,24 +161,22 @@ The React app we’re adding will become an app for taking notes. However, in th
       );
     };
     
-    export default App;
-    
+    export default App;  
     ```
     
 5. Register the React app entry point in /ClientApp/webpack.config.js. This should create the react\_nodes.js bundle that is referenced from the ReactNotes.cshtml Razor page:
     
-    ```
+    ```js
     entry: {
       main: './js/main.js',
       classic_jquery: './js/classic-jquery.js',
       react_notes: './js/react-notes.js'
-    },
-    
+    },    
     ```
     
     Let's see if it's working. Navigate to the project root folder in the command line, enter
     
-    ```
+    ```bash
     dotnet run
     ```
     
@@ -200,13 +192,13 @@ Most tutorials suggest to use [Babel](https://babeljs.io/) and the [babel-loader
 
 1. Add TypeScript, a TypeScript loader for webpack and the React TypeScript type definitions. We’re using the [awesome-typescript-loader](https://github.com/s-panferov/awesome-typescript-loader) for webpack because the other common option, [ts-loader](https://github.com/TypeStrong/ts-loader), had an issue with TypeScript 2.9.2 at the time of writing. In the /ClientApp folder run:
     
-    ```
+    ```bash
     npm install typescript awesome-typescript-loader @types/react @types/react-dom --save-dev
     ```
     
 2. Add a tsconfig.json file to the /ClientApp folder:
     
-    ```
+    ```json
     {
       "compilerOptions": {
         "outDir": "../wwwroot/dist/",
@@ -218,27 +210,26 @@ Most tutorials suggest to use [Babel](https://babeljs.io/) and the [babel-loader
         "sourceMap": true
       }
     }
-    
     ```
     
     This are settings for the TypeScript compiler. Most notable is the “jsx” setting. This is set to “react”, which means that all JSX is converted to React.createElement() function calls. Also, we’re creating source maps to enable proper debugging of the .tsx files.
 3. Change the extension of our React files to .tsx (/ClientApp/js/react-notes.js and /ClientApp/js/react-notes/App.js). The TypeScript compiler only understands JSX syntax in .tsx files.
 4. Change the imports of react and react-dom in the .tsx file from
     
-    ```
+    ```js
     import React from ‘react’
     ```
     
     to
     
-    ```
+    ```js
     import * as React from ‘react’
     ```
     
     because react and react-dom have no default exports and TypeScript doesn’t like that
 5. Change the webpack configuration file (/ClientApp/webpack.config.js):
     
-    ```
+    ```js
     const path = require('path');
     const MiniCssExtractPlugin = require('mini-css-extract-plugin');
     
@@ -291,7 +282,6 @@ Most tutorials suggest to use [Babel](https://babeljs.io/) and the [babel-loader
     
       return config;
     };
-    
     ```
     
     To make TypeScript work we have made the following changes to the configuration file:
@@ -302,7 +292,7 @@ Most tutorials suggest to use [Babel](https://babeljs.io/) and the [babel-loader
 
 That should do it! From the command-line, go to the project root folder and execute:
 
-```
+```bash
 dotnet run
 ```
 

@@ -35,59 +35,20 @@ Castle Transaction Services makes it possible to run any arbitrary piece of code
 
 For file operations, we created a simple service that performs common file operations like writing new files, copying files and creating folders. When performing an operation, the service checks if there is a current transaction and if so, the actual operation is delegated to a class that performs the actual transactional operation. An excerpt of our transactional fileservice:
 
-```
+```csharp
 public void CopyFile(string filePathToCopy, string directoryToCopyTo)
-```
-
-```
 {
-```
-
-```
     ITransaction transaction = ObtainCurrentTransaction();
-```
-
-```
     if (transaction != null)
-```
-
-```
     {
-```
-
-```
         FileWriter fileWriter = new FileWriter(this._tempDir, transaction.Name);
-```
-
-```
         transaction.Enlist(fileWriter);
-```
-
-```
         fileWriter.CopyFile(filePathToCopy, directoryToCopyTo);
-```
-
-```
     }
-```
-
-```
     else
-```
-
-```
     {
-```
-
-```
         File.Copy(filePathToCopy, Path.Combine(directoryToCopyTo, Path.GetFileName(filePathToCopy)), true);
-```
-
-```
     }
-```
-
-```
 }
 ```
 
@@ -99,50 +60,20 @@ The complete implementation of the file service can be found in Cuyahoga SVN at 
 
 One of the really great features of the Castle transaction services is that you just have to decorate your method with an attribute and everything is executed within the context of a transaction:
 
-```
+```csharp
 [Transaction(TransactionMode.RequiresNew)]
 ```
 
-```
+```csharp
 public virtual void CreateSite(Site site, string siteDataRoot, IList<Template> templatesToCopy, string systemTemplatesDirectory)
-```
-
-```
 {
-```
-
-```
     // 1. Save new site object in the database.
-```
-
-```
     ..
-```
-
-```
     // 2. Create site directories.
-```
-
-```
     ..
-```
-
-```
     // 3. Copy template objects to new site and save in database.
-```
-
-```
     ..
-```
-
-```
     // 4. Copy template files to site templates directory.
-```
-
-```
     ...
-```
-
-```
 }
 ```

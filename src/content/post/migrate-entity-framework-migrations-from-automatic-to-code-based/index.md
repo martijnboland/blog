@@ -23,7 +23,7 @@ Summary of migrations migration steps (SQL Server database):
 2. Script the existing tables (in SQL Server Management Studio: Generate Scripts and then under Scripting Options –> Advanced, ensure that ‘Check for object existence’ is set to True). Add the script to your VS project that has the migrations. We need this later;
 3. In \\Migrations\\Configuration.cs turn off Automatic Migrations:  
     
-    ```
+    ```csharp
     internal sealed class Configuration : DbMigrationsConfiguration<PortalDbContext>
     {
         public Configuration()
@@ -37,7 +37,7 @@ Summary of migrations migration steps (SQL Server database):
 4. In the Package Manager Console enter ‘Add-Migration –IgnoreChanges’ and enter a name for the initial migration. This will create the baseline migration in the \\MIgrations directory.
 5. Now the tricky bit: ensure that the script created in step 2 is executed in the Up() method of the initial migration. My Up() method looks like this:  
     
-    ```
+    ```csharp
     public override void Up()
     {
         // Run script that creates the tables while preserving
@@ -63,8 +63,6 @@ Summary of migrations migration steps (SQL Server database):
             }
         }
     }
-    
-    
     ```
     
       

@@ -13,12 +13,9 @@ Since version 3.0, [ASP.NET Core](https://dotnet.microsoft.com/apps/aspnet) uses
 However, there are situations where the transition from Newtonsoft.Json to System.Text.Json is not so straightforward. Think about having a lot of custom JsonConverters or a dependency on an external package that requires Newtonsoft.Json.  
 For those cases, there is a simple solution: add the [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet package and call [AddNewtonsoftJson](https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.1&tabs=visual-studio#use-newtonsoftjson-in-an-aspnet-core-30-mvc-project) in the ConfigureServices method of the startup class.
 
-```
-[sourcecode language='csharp'  padlinenumbers='true']
+```csharp
 services.AddControllers()
     .AddNewtonsoftJson();
-[/sourcecode]
-
 ```
 
 This will configure ASP.NET Core to use Newtonsoft.Json again for all its JSON handling just like before version 3.0.
@@ -45,8 +42,7 @@ We still have to add the [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.n
 
 When the Result of an action is an ObjectResult (which happens when directly returning an object from a controller action or via the Ok() method) we can replace the formatter of the ObjectResult et voilà:
 
-```
-[sourcecode language='csharp' ]
+```csharp
 public class NewtonsoftJsonFormatterAttribute : ActionFilterAttribute
 {
    public override void OnActionExecuted(ActionExecutedContext context)
@@ -67,22 +63,17 @@ public class NewtonsoftJsonFormatterAttribute : ActionFilterAttribute
         }
     }
 }
-[/sourcecode]
-
 ```
 
 When we add this NewtonsoftJsonFormatterAttribute to a controller or action, that specific controller or action will use Newtonsoft.Json to serialize JSON:
 
-```
-[sourcecode language='csharp' ]
+```csharp
 [HttpGet]
 [NewtonsoftJsonFormatter]
 public IActionResult Get()
 {
 	return Ok(new { text = "Hello" });
 }
-[/sourcecode]
-
 ```
 
 Replacing the **InputFormatter** however turned out to be not so easy. In earlier versions of ASP.NET Core it was possible to replace the InputFormatter with an ActionFilterAttribute by implementing the IResourceFilter interface, but in recent versions this is not possible anymore. It seems it’s simply impossible to directly change InputFormatters from an ActionFilterAttribute. Please leave a comment if I’m wrong here.
@@ -91,8 +82,7 @@ In my quest for how to replace the InputFormatter however, I stumbled upon [a gr
 
 When an ActionFilterAttribute implements IControllerModelConvention or IActionModelConvention, these conventions are automagically applied by ASP.NET Core, so all we have to do is to implement these interfaces in our NewtonsoftJsonFormatterAttribute and hook up a custom model binder that uses NewtonsoftJsonInputFormatter and we’re good to go:
 
-```
-[sourcecode language='csharp' ]
+```csharp
 public class NewtonsoftJsonFormatterAttribute : ActionFilterAttribute, IControllerModelConvention, IActionModelConvention
 {
     public void Apply(ControllerModel controller)
@@ -165,8 +155,6 @@ public class NewtonsoftJsonBodyModelBinder : BodyModelBinder
         };
     }
 }
-[/sourcecode]
-
 ```
 
 With the code above, all we have to do is to add a \[NewtonsoftJsonFormatter\] attribute to a controller or a method and that will then use Newtonsoft.Json instead of System.Text.Json for both input and output formatting.
@@ -175,8 +163,7 @@ Note that the custom NewtonsoftJsonBodyModelBinder class has quite a few depende
 
 It’s still possible to configure Newtonsoft.Json via ConfigureServices:
 
-```
-[sourcecode language='csharp' ]
+```csharp
 services.Configure(o =>
 {
     o.SerializerSettings.ContractResolver = new DefaultContractResolver
@@ -186,16 +173,13 @@ services.Configure(o =>
     o.SerializerSettings.Converters = new List { new StringEnumConverter() };
 
 });
-[/sourcecode]
-
 ```
 
 ### Bonus: register the attribute with a convention
 
 It’s possible to apply ActionFilterAttributes such as our NewtonsoftJsonFormatterAttribute to many controllers and/or actions at once with [application model conventions](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/application-model?view=aspnetcore-3.1#conventions). In one of the projects I’m working on, we’re using System.Text.Json but also a bunch of shared controllers from a shared assembly that require Newtonsoft.Json (registered as application part).  A single convention makes this possible:
 
-```
-[sourcecode language='csharp' ]
+```csharp
 public class MyNewtonsoftJsonConvention : IControllerModelConvention
 {
     private readonly Assembly _sharedAssembly;
@@ -225,8 +209,6 @@ public class MyNewtonsoftJsonConvention : IControllerModelConvention
             !controller.Attributes.Any(x => x.GetType() == typeof(NewtonsoftJsonFormatterAttribute));
     }
 }
-[/sourcecode]
-
 ```
 
 One caveat: when applying attributes via a convention and these attributes implement application model conventions themselves, these conventions are not automatically configured by ASP.NET Core anymore so we have to apply these ourselves explicitly.

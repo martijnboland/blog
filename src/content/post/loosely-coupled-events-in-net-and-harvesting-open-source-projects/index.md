@@ -17,7 +17,7 @@ A little while ago, I needed something to handle events in a loosely coupled man
 
 The nicest thing is that it allows subscribers to handle multiple events by just implementing an interface:
 
-```
+```csharp
 public interface IHandle<TMessage> : IHandle 
 {  
     void Handle(TMessage message);  
@@ -49,7 +49,7 @@ I really like the approach that is  taken in Funnelweb so I’ve taken that as 
 
 The event listener interface:
 
-```
+```csharp
 /// <summary>
 /// Event listener marker interface (for IoC convenience).
 /// </summary>
@@ -72,7 +72,7 @@ public interface IEventListener<in TPayload> : IEventListener where TPayload: cl
 
 An event listener implementation:
 
-```
+```csharp
 public class MyEventListenerClass: IEventListener<Foo>, IEventListener<Bar>
 {
     // Snip initialization and other code.
@@ -91,7 +91,7 @@ public class MyEventListenerClass: IEventListener<Foo>, IEventListener<Bar>
 
 The event publisher interface:
 
-```
+```csharp
 /// <summary>
 /// Publishes events to listeners.
 /// </summary>
@@ -109,7 +109,7 @@ public interface IEventPublisher
 
 The event publisher implementation:
 
-```
+```csharp
 public class EventPublisher : IEventPublisher
 {
     private readonly IEnumerable<EventListener> _listeners;
@@ -140,7 +140,7 @@ Let’s say we have an application service IMyService and a plugin IPlugin, impl
 
 Event, Service and Plugin:
 
-```
+```csharp
 public class MyEvent
 {
     public string Message { get; set; }
@@ -188,7 +188,7 @@ public class MyPlugin : IPlugin, IEventListener<MyEvent>
 
 Wire things together in the IoC container (Autofac):
 
-```
+```csharp
 var builder = new ContainerBuilder();
 
 // IEventPublisher
@@ -216,7 +216,7 @@ Note that the plugins (our IEventListener) can have a different lifestyle (Singl
 
 Finally the ASP.NET MVC controller:
 
-```
+```csharp
 public class MyController : Controller
 {
     private IMyService _myService;

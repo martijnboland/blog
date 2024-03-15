@@ -1,6 +1,7 @@
 ---
 title: "Develop ReactJS + ASP.NET Web API apps in Visual Studio 2015"
 date: "2015-12-10"
+updatedDate: "2015-12-11"
 categories: 
   - "net"
   - "javascript"
@@ -56,7 +57,7 @@ An alternative for the WebPack Task Runner extension is the [NPM Scripts Task Ru
 
 The extension allows us to execute the commands from the scripts section of the NPM package.json file:
 
-```
+```json
 "scripts": {
   "start": "webpack-dev-server --port 3000 --config webpack.config.js --hot --content-base build --progress --colors",
   "build": "webpack --config webpack.config.js --progress --profile --colors",

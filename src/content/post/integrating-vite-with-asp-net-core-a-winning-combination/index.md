@@ -10,10 +10,6 @@ tags:
   - "asp-net-core"
   - "spaservices"
   - "vite"
-coverImage: {
-  src: "./images/77ripvyhwi6xl0gqkvj9_thumb.png",
-  alt: "Vite"
-}
 ---
 
 _Updated 17 apr 2023: Libraries in example code updated to latest stable versions (.NET 6 LTS, Vite 4) and simplified vite config file._
@@ -57,15 +53,12 @@ npm install vite typescript –save-dev
 
 The example vite.config.ts file below is enough configuration to get started:
 
-```
-[sourcecode language='javascript'  padlinenumbers='true']
+```js
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: '/dist/'
 })
-[/sourcecode]
-
 ```
 
 It says: the base folder for the client-side files is /dist/ (we need this to reference the files from the ASP.NET Core Razor views).
@@ -80,15 +73,12 @@ npx vite
 
 but it’s convenient to define a few npm script tasks in the package.json file:
 
-```
-[sourcecode language='javascript'  padlinenumbers='true']
+```js
 "scripts": {
     "start": "echo Starting the development server && vite",
     "dev": "vite",
     "build": "vite build"
 }
-[/sourcecode]
-
 ```
 
 This way we can execute Vite in the following ways:
@@ -105,8 +95,7 @@ In ASP.NET Core for .NET 5 and up, we can use the package [Microsoft.AspNetCore.
 
 In our Startup.cs we add the following code in the Configure method:
 
-```
-[sourcecode language='csharp'  padlinenumbers='true']
+```csharp
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 ...
 
@@ -131,22 +120,17 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
         }
     }
 
-[/sourcecode]
-
 ```
 
 The UseSpa middleware handles requests for client scripts and forwards these to the running Vite development server on port 5173. Starting the Vite development server is done by abusing the spa.UseReactDevelopmentServer method which in fact has nothing to do with React but just executes an npm script in the context of the ASP.NET Core process. However, UseReactDevelopmentServer only works properly when the npm script outputs the line ‘Starting the development server’. For that reason we have to create that special npm start script in package.json that first echos the ‘Starting the development server’ line to keep the middleware happy and then proceeds with starting the Vite development server.
 
 The final step is to reference the scripts that are served by the Vite development server from the Razor layout:
 
-```
-[sourcecode language='html' ]
-
-    
-    
-
-[/sourcecode]
-
+```html
+<environment names="Development">
+    <script type="module" src="~/dist/@@vite/client"></script>
+    <script type="module" src="~/dist/js/main.js"></script>
+</environment>
 ```
 
 First, we have to add a reference to the Vite runtime script that facilitates development features like hot-reloading (escaping the Razor-reserved @ with @@) and then reference the entrypoint script file(s). Two things are important here:
@@ -162,8 +146,7 @@ So far we have only been talking about building for the development environment 
 
 Vite covers this by using Rollup for creating the production bundles. This requires a bit extra configuration in the vite.config.ts file:
 
-```
-[sourcecode language='javascript' ]
+```js
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -179,8 +162,6 @@ export default defineConfig({
     }
   }
 })
-[/sourcecode]
-
 ```
 
 In the ‘build’ property we tell Vite that production bundles must go into the ‘../wwwroot/dist’ folder and the ‘./js/main.js’ is the ‘main’ entrypoint. Running ‘npm run build’ in the ClientApp folder results in the following build output:
@@ -189,26 +170,20 @@ In the ‘build’ property we tell Vite that production bundles must go into th
 
 As you can see, the generated bundles are suffixed with a hash for cache busting, so we cannot directly reference those in our Razor layout file. The [Vite documentation](https://vitejs.dev/guide/backend-integration.html) suggests to use the manifest.json file on the backend to resolve the correct references, but luckily we can use a shortcut with the [asp-src-include](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.scripttaghelper.srcinclude?view=aspnetcore-5.0#Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper_SrcInclude) tag helper:
 
-```
-[sourcecode language='html' ]
-
-    
-
-[/sourcecode]
-
+```html
+<environment names="Staging,Production">
+    <script type="module" asp-src-include="~/dist/assets/main-*.js"></script>
+</environment>
 ```
 
 This tag helper allows wild cards in the script name, so we can reference the generated script file by using a wild card for the hash.
 
 The same goes for referencing the generated css bundle in the head of the Razor layout:
 
-```
-[sourcecode language='html' ]
-
-    
-
-[/sourcecode]
-
+```html
+<environment names="Staging,Production">
+    <link rel="stylesheet" asp-href-include="~/dist/assets/main-*.css" />
+</environment>
 ```
 
 Here we use the asp-href-include tag helper to reference the generated css bundle.

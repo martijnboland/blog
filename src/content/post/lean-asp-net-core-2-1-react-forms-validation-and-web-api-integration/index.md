@@ -28,7 +28,7 @@ You can find the source code for this post at [https://github.com/martijnboland/
 
 For our example app we only need a very simple back-end API that can list, add and remove notes. This is the Web API controller code ([/Api/Notes/NotesController.cs](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/Api/Notes/NotesController.cs)):
 
-```
+```csharp
 [Route("api/notes")]
 public class NotesController : Controller
 {
@@ -64,12 +64,11 @@ public class NotesController : Controller
         return NoContent();
     }
 }
-
 ```
 
 Nothing fancy here, just a standard ASP.NET Web API controller. The Add method performs validation via data annotations on the Note class ([/Api/Notes/Note.cs](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/Api/Notes/Note.cs)):
 
-```
+```csharp
 public class Note
 {
     public string Id { get; set; }
@@ -85,7 +84,6 @@ public class Note
 
     public DateTime CreatedAt { get; set; }
 }
-
 ```
 
 When a validation error occurs, the Add method returns a BadRequest ActionResult with the invalid ModelState as data. This is a common pattern in many ASP.NET web API applications.
@@ -106,7 +104,7 @@ To be honest, forms and React can be quite cumbersome together. If you follow th
 
 So, how does it look, a TypeScript React form with React-Final-Form components ([/ClientApp/js/react-notes/NoteForm.tsx](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/ClientApp/js/react-notes/NoteForm.tsx))?
 
-```
+```jsx
 import * as React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextInput } from '../components/TextInput';
@@ -143,12 +141,11 @@ const NoteForm: React.SFC<NoteFormProps> = (props) => {
 };
 
 export default NoteForm;
-
 ```
 
 The Form and Field components come from the React-Final-Form library and are basically wrappers around your own components or standard JSX elements. Form has a [render prop](https://reactjs.org/docs/render-props.html) that provides all sorts of functionality for working with forms. The Field component has a ‘component’ attribute where we use our own TextInput and TextArea components. These are standard input and textarea elements wrapped in some Bootstrap layout elements ([/ClientApp/js/components/TextInput.tsx](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/ClientApp/js/components/TextInput.tsx)):
 
-```
+```jsx
 import * as React from 'react';
 import * as classNames from 'classnames';
 
@@ -166,7 +163,6 @@ export const TextInput: React.SFC<any> = ({ input, meta, label, type, ...rest })
     </div>
   );
 }
-
 ```
 
 When being used as component in a Field component, our own components (like TextInput above) get extra form-related props (input, meta) for free.
@@ -179,7 +175,7 @@ What’s interesting for us is that the handleSave() method returns a Promise. W
 
 So, we now have an API that returns an object with errors when validation fails _and_ we have a form that can display errors when form submission has finished. The only thing we need to do is to glue these two together. Let’s have a look at the error response from our API:
 
-```
+```json
 {
   "title": [
     "The title must be at least 3 characters"
@@ -193,20 +189,18 @@ So, we now have an API that returns an object with errors when validation fails 
 
 Almost perfect. In case of an error, the API returns a JSON object with the form field names as property names and an array of error messages per property. The only issue is that the form expects a single error message per field. Therefore, we need to convert the JSON object from the API to:
 
-```
+```json
 {
   "title": "The title must be at least 3 characters",
   "content": "The content is required"
 }
-
-
 ```
 
 ### Calling the API and returning validation errors
 
 Our logic that handles adding a new note resides in the top-level [Notes component](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/ClientApp/js/react-notes/Notes.tsx). The createNote() function calls the api function addNote() and checks the result. If the result is ok, the list of notes is refreshed, otherwise the errors property of the result is returned as the result of the Promise:
 
-```
+```ts
 createNote = (note: Note): Promise<any> => {
   return addNote(note)
     .then(res => {
@@ -217,12 +211,11 @@ createNote = (note: Note): Promise<any> => {
       }
     });
 }
-
 ```
 
 The actual calling of the API takes place in the addNote function ([/ClientApp/js/react-notes/api.ts](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/ClientApp/js/react-notes/api.ts)) with the [Axios](https://github.com/axios/axios) http library:
 
-```
+```ts
 import axios from 'axios';
 import { handleApiSuccess, handleApiError, IApiResult } from '../shared/api';
 import { Note } from './models';
@@ -243,7 +236,7 @@ export const addNote = (note: Note): Promise<IApiResult> => {
 
 In short, Axios makes a POST request with the note object as data to the ‘/api/notes’ url to create a new note. The result is then handled in a generic way with the handleApiSuccess and handeApiError callback functions (located in [/ClientApp/js/shared/api.ts](https://github.com/martijnboland/LeanAspNetCore-React/blob/master/ClientApp/js/shared/api.ts)). This is where the eventual transformation from the .NET Web API error object to the error object takes place:
 
-```
+```ts
 import { AxiosResponse, AxiosError } from 'axios';
 import { FORM_ERROR } from 'final-form';
 
@@ -290,7 +283,6 @@ export const handleApiError = (err: AxiosError): IApiResult => {
     throw err;
   }
 };
-
 ```
 
 Note that there is a special case when the property name of an error is an empty string. In server-side scenario’s, these errors are usually displayed as a generic form-global errors. Here, it goes into a special FORM\_ERROR property of the errors object. This way, React Final Form treats it as a form-global error and we can access it via the submitError render prop of the Form component.

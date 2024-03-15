@@ -1,6 +1,7 @@
 ---
 title: "Entity Framework 4.0: a fresh start (with demo application)"
 date: "2009-11-22"
+updatedDate: "2009-11-26"
 categories: 
   - "or-mapping"
 tags: 
@@ -25,7 +26,7 @@ So, Entity Framework 1.0 pretty much sucks](../one-year-after-the-entity-framewo
 
 In EF4, it’s now possible to use entity classes that don’t have to inherit from EntityObject. This allows for better testability and separation of concerns. This is how an entity looks in the demo:
 
-```
+```csharp
 public class Course
 {
     public virtual int Id { get; set; }
@@ -57,7 +58,7 @@ EF4 now allows model-first design from the VS 2010 designer, but it can still ge
 
 So you now just create your POCO entity and add a mapping class that replaces the edmx designer:
 
-```
+```csharp
 public class CourseMapping : EntityConfiguration<Course>
 {
     public CourseMapping()
@@ -79,7 +80,7 @@ Looks remarkably similar to [Fluent NHibernate](http://wiki.fluentnhibernate.org
 
 I’m not sure if this is the most optimal way to define the mapping, but it works. In the demo, there is a class CoursesContextBuilder that wraps the ContextBuilder from the EF4 Feature CTP where the mappings are added. It also serves as a factory for new ObjectContext instances () :
 
-```
+```csharp
 public class CoursesContextBuilder
 {
     private ContextBuilder<ObjectContext> _builder;
@@ -125,7 +126,7 @@ That’s all we need to get EF4 working. In theory, we can now do everything wit
 
 To make sure our application code isn’t tied to EF directly, data access goes through Repository interfaces. In the demo app you can find a generic IRepository<T> interface that is implemented by an EfRepository<T> class. The EfRepository implementation uses the EF ObjectContext to perform queries and so on. Note that we added an extra IContextManager interface that the EfRepository depends on. The IContextManager is responsible for managing the lifetime of the ObjectContext that is obtained from the ContextBuilder. This way, the repository implementations don’t have to worry about creating and disposing ObjectContext instances. It’s just always always available.All specific Repository interfaces inherit from IRepository<T> and the specific implementations inherit from EfRepository<T>.
 
-```
+```csharp
 public interface ICourseRepository : IRepository<Course>
 {
     void DeleteCourseWithSchedule(Course course);
@@ -134,7 +135,7 @@ public interface ICourseRepository : IRepository<Course>
 }
 ```
 
-```
+```csharp
 /// <summary>
 /// Course-specific repository.
 /// </summary>
@@ -178,7 +179,7 @@ public class CourseRepository : EfRepository<Course>, ICourseRepository
 
 Now we have our data access interfaces in place, it’s time for consuming. This is plain simple. Below is an example of how a controller in the ASP.NET MVC app in the demo uses the interfaces:
 
-```
+```csharp
 public class TeachersController : Controller
 {
     private ITeacherRepository _teacherRepository;

@@ -17,31 +17,13 @@ In the past I used the ASP.NET WebForms validators. These do a proper job, but a
 
 In Cuyahoga, we're using the [Castle Validator component](http://hammett.castleproject.org/?p=114) to perform basic validation, mostly because we're already using other components from the Castle stack and it just works fine. With Castle validators, you're decorating properties of your Domain entities with attributes like:
 
-```
+```csharp
 [ValidateNonEmpty("UserNameValidatorNonEmpty")]
-```
-
-```
 [ValidateLength(1, 50, "UserNameValidatorLength")]
-```
-
-```
 public virtual string UserName
-```
-
-```
 {
-```
-
-```
     get { return this._userName; }
-```
-
-```
     set { this._userName = value; }
-```
-
-```
 }
 ```
 
@@ -61,59 +43,20 @@ At this point, the controller can validate, but to use the Castle validators we 
 
 Because we're using the [Castle Windsor IoC container](http://www.castleproject.org/container/index.html) we can wire everything together in the controller constructor:
 
-```
+```csharp
 public class LoginController : BaseController
-```
-
-```
 {
-```
-
-```
     private readonly IAuthenticationService _authenticationService;
-```
-
-```
     /// <summary>
-```
-
-```
     /// Create and initialize an instance of the LoginController class.
-```
-
-```
     /// </summary>
-```
-
-```
     /// <param name="authenticationService">The authentication service</param>
-```
-
-```
     /// <param name="modelValidator">The IModelValidator for LoginViewData</param>
-```
-
-```
     public LoginController(IAuthenticationService authenticationService, IModelValidator<LoginViewData> modelValidator)
-```
-
-```
     {
-```
-
-```
         this._authenticationService = authenticationService;
-```
-
-```
         this.ModelValidator = modelValidator;
-```
-
-```
     }
-```
-
-```
 }
 ```
 
@@ -123,35 +66,14 @@ In the container is the registered that when asked for an instance of IModelVali
 
 The Login action of the LoginController performs validation after populating a LoginViewData instance via TryUpdateModel():
 
-```
+```csharp
 public ActionResult Login(string returnUrl)
-```
-
-```
 {
-```
-
-```
     var loginUser = new LoginViewData();
-```
-
-```
     try
-```
-
-```
     {
-```
-
-```
         if (TryUpdateModel(loginUser) && ValidateModel(loginUser))
-```
-
-```
         {
-```
-
-```
              // do authentication and exception handling
 ```
 

@@ -34,14 +34,14 @@ The solution is: [use the webpack development server as a reverse proxy](https:/
 
 For this to happen we have to install the webpack development server with
 
-```
+```bash
 npm install webpack-dev-server --save-dev
 
 ```
 
 and add a little bit extra configuration to the webpack configuration file (webpack.config.js):
 
-```
+```js
 module.exports = (env = {}, argv = {}) => {
   
   const isProd = argv.mode === 'production';

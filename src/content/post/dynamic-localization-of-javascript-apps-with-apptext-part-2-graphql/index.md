@@ -50,7 +50,7 @@ The GraphQL schema in AppText is partly dynamic. The top-level fields are the co
 
 Our JavaScript example app uses the GraphQL API to retrieve to content for the intro page with the help of the [urql](https://formidable.com/open-source/urql/) library. For this, we have created a graphQLClient to connect to our AppText GraphQL API:
 
-```
+```js
 import { createClient } from 'urql';
 
 import { appTextApiBaseUrl, appTextAppId, appTextApiKey } from './config';
@@ -71,8 +71,7 @@ The url property of the client options object points to the AppText GraphQL api.
 
 This client is added to our example application in the top-level component (App.tsx) via the [urql Provider component](https://formidable.com/open-source/urql/docs/basics/getting-started/#providing-the-client).
 
-```
-[sourcecode language='javascript'  padlinenumbers='true']
+```jsx
 import React, { Suspense, useRef, useState } from 'react';
 import { Provider as GraphQLProvider } from 'urql';
 import graphQLClient from './localization/graphQLClient';
@@ -83,22 +82,20 @@ function App() {
   // Snip App init code
 
   return (
-    
-      
-        
+    <Suspense fallback="loading">
+      <GraphQLProvider value={graphQLClient}>
+        <div className="app">
            ...
-        
-      
-    
+        </div>
+      </GraphQLProvider>
+    </Suspense>
   );
 }
-[/sourcecode]
-
 ```
 
 With the GraphQL client in place, we can now query the GraphQL API for content. For convenience, the example application has a useAppTextPage hook that encapsulates the GraphQL querying of the **pages** collection:
 
-```
+```js
 import { useQuery } from 'urql';
 
 const AppTextPageQuery = `
@@ -136,8 +133,7 @@ Note that the GraphQL query, **AppTextPageQuery**, receives two variables, $lang
 
 In our example application, we have a component, Intro.tsx that displays simple translations via i18next, but also custom content via the useAppTextPage hook:
 
-```
-[sourcecode language='javascript' ]
+```jsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
@@ -173,13 +169,13 @@ const Intro: React.FC = ({ onCreateNote }) => {
 }
 
 export default Intro;
-[/sourcecode]
-
 ```
 
 The custom content is retrieved with the **useAppTextPage** hook:
 
+```js
 const { page, fetching, error } = useAppTextPage('intro', i18n.language);
+```
 
 This will get the content for the page where the contentKey starts with ‘intro’ and for the currently selected language, resulting in a **page** object with **title** and **content** properties that is rendered in the component:
 
@@ -193,8 +189,7 @@ Besides the collections, the AppText GraphQL API also has two other useful top-l
 
 In our JavaScript example, we use this in our LanguageSelector component to display the list of available languages. Check the **LanguagesQuery**:
 
-```
-[sourcecode language='javascript' ]
+```js
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'urql';
@@ -242,8 +237,6 @@ const LanguageSelector: React.FunctionComponent = () => {
 };
 
 export default LanguageSelector;
-[/sourcecode]
-
 ```
 
 You can see that the LanguageSelector component also uses i18next (via the useTranslation hook), not only to for the label translation, but also to set the current language for the application.

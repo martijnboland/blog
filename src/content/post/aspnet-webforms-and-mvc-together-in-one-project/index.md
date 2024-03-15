@@ -28,152 +28,57 @@ Although designed to partition an MVC application, area’s are also useful when
 
 So, I implemented area’s with a specific AreaViewEngine that can lookup views based on the area name and added the extension to the RouteCollection class to add area information when mapping routes. This is how Global.asax.cs looks:
 
-```
+```csharp
 protected void Application_Start(object sender, EventArgs e)
-```
-
-```
 {
-```
-
-```
     ViewEngines.Engines.Clear();
-```
-
-```
     ViewEngines.Engines.Add(new AreaViewEngine());
-```
 
-```
     // Routes
-```
-
-```
     RegisterRoutes(RouteTable.Routes);
-```
-
-```
 }
-```
 
-```
 public static void RegisterRoutes(RouteCollection routes)
-```
-
-```
 {
-```
-
-```
     routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-```
-
-```
     routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
-```
-
-```
     routes.CreateArea("mymvcapp", "WebFormsMVCDemo.MyMvcApp.Controllers",
-```
-
-```
-        routes.MapRoute("mymvcapp-defaultroute", "mymvcapp/{controller}/{action}/{id}", new { action = "Index", controller = "Home", id = "" })
-```
-
-```
+    routes.MapRoute("mymvcapp-defaultroute", "mymvcapp/{controller}/{action}/{id}", new { action = "Index", controller = "Home", id = "" })
     );
-```
-
-```
 }
 ```
 
 With the ViewEngine and routes in place, we’re able to run the MVC app from the url /mymvcapp. To make sure the WebForms url’s still work, we just have to add some ignore statements in Global.asax.cs (in our case, exclude .aspx and .ashx from routing):
 
-```
+```csharp
 public static void RegisterRoutes(RouteCollection routes)
-```
-
-```
 {
-```
-
-```
     routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-```
-
-```
     routes.IgnoreRoute("{*allaspx}", new { allaspx = @".*\.aspx(/.*)?" });
-```
-
-```
     routes.IgnoreRoute("{*allashx}", new { allashx = @".*\.ashx(/.*)?" });
-```
-
-```
     routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
-```
-
-```
     routes.CreateArea("mymvcapp", "WebFormsMVCDemo.MyMvcApp.Controllers",
-```
-
-```
         routes.MapRoute("mymvcapp-defaultroute", "mymvcapp/{controller}/{action}/{id}", new { action = "Index", controller = "Home", id = "" })
-```
-
-```
     );
-```
-
-```
 }
 ```
 
 One caveat: when performing the request for /mymvcapp without controller name (and action), the Default.aspx that comes with the MVC projects was loaded, but area’s seem so cause a problem with the default one. Instead of rewriting the url from ‘default.aspx’ to ‘/’, I had to rewrite to url to ‘Home/Index’:
 
-```
+```csharp
 public partial class _Default : Page
-```
-
-```
 {
-```
-
-```
     public void Page_Load(object sender, System.EventArgs e)
-```
-
-```
     {
-```
-
-```
         string pathToRewriteTo = Request.Path.ToLowerInvariant().Replace("default.aspx", "Home/Index");
-```
-
-```
         HttpContext.Current.RewritePath(pathToRewriteTo, false);
-```
-
-```
         IHttpHandler httpHandler = new MvcHttpHandler();
-```
-
-```
         httpHandler.ProcessRequest(HttpContext.Current);
-```
-
-```
     }
-```
-
-```
 }
 ```
 
 I’m under the impression that I’m missing something very simple, but couldn’t get my fingers behind it, so if you know it, please comment.
 
- 
 
 That’s it. I created a sample project with both WebForms and an MVC app in a subfolder. You can download it here.

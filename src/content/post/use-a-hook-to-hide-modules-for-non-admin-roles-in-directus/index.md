@@ -24,8 +24,7 @@ In Directus, it’s possible to alter the results of a query with a read hook. A
 
 The following api hook simply sets the items for the module\_bar to only include the ‘content’ module:
 
-```
-[sourcecode language='javascript'  padlinenumbers='true']
+```js
 module.exports = function registerHook({ filter }) {
 
   filter('settings.read', async (items, meta, context) => {
@@ -38,8 +37,6 @@ module.exports = function registerHook({ filter }) {
   });
 
 };
-[/sourcecode]
-
 ```
 
 Et voilà!

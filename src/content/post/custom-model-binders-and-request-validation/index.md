@@ -15,7 +15,7 @@ In ASP.NET MVC you can create your own model binders to control the way that mod
 
 There are many examples online of how to build a custom model binder. In all these examples you can find a common way of getting a value from the HTTP request:
 
-```
+```csharp
 public class MyModelBinder: IModelBinder
 {
     public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
@@ -41,7 +41,7 @@ It appears that a call to bindingContext.ValueProvider.GetValue() in the code ab
 
 Unfortunately we can’t use any of the framework code because it’s sealed, private or whatever to protect ignorant devs from doing dangerous stuff, but  it’s not too difficult to create a working custom model binder that respects the AllowHtml and ValidateInput attributes:
 
-```
+```csharp
 public class MyModelBinder: IModelBinder
 {
     public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
@@ -63,7 +63,7 @@ public class MyModelBinder: IModelBinder
 
 The other required piece is a way to retrieve an unvalidated value. In this example we use an extension method for the ModelBindingContext class:
 
-```
+```csharp
 public static ValueProviderResult GetValueFromValueProvider(this ModelBindingContext bindingContext, bool performRequestValidation)
 {
     var unvalidatedValueProvider = bindingContext.ValueProvider as IUnvalidatedValueProvider;

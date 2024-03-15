@@ -1,6 +1,7 @@
 ---
 title: "Paging with ASP.NET MVC"
 date: "2008-08-27"
+updatedDate: "2012-04-23"
 categories: 
   - "aspnet-mvc"
 tags: 
@@ -16,8 +17,7 @@ _Updated 2011-03-22: Changed download link: [https://github.com/martijnboland/Mv
 
 _Updated 2009-02-04: Upgraded source and demo to ASP.NET MVC RC1_
 
-_Updated 2009-01-16: Upgraded source and demo to ASP.NET MVC Beta  
-_
+_Updated 2009-01-16: Upgraded source and demo to ASP.NET MVC Beta_
 
 _Updated 2008-09-09: Source and Demo now use ASP.NET MVC preview 5_
 
@@ -31,7 +31,7 @@ Of course, since ASP.NET MVC isn't finished yet, it leaves something to desire. 
 
 First, there was the PagedList<T> that Scott Guthrie already used in one of the earliest MVC demo's and that later appeared in improved incarnations from [Rob Conery](http://blog.wekeroad.com/2007/12/10/aspnet-mvc-pagedlistt/) and  [Troy Goode](http://www.squaredroot.com/post/2008/07/08/PagedList-Strikes-Back.aspx). This was a nice starting point, especially because we also used LINQ To SQL as our data access layer. To provide an extra extension point, I created an IPagedList<T> interface instead of using the PagedList<T> directly.
 
-```
+```csharp
 public interface IPagedList<T> : IList<T>
 {
     int PageCount { get; }
@@ -50,7 +50,7 @@ public interface IPagedList<T> : IList<T>
 
 After choosing the IPagedList<T> implementation I started thinking about how I could create an HtmlHelper extension method that renders the page links. First, I made the mistake to couple the helper to the IPagedList<T> and it took me a little while to realize that a paging HTML helper doesn't need anything to know about the underlying data source. It's sole purpose is to generate a list of hyperlinks for pages and the only thing we need to know is the total amount of items, the page size and the current page. This is what the most basic HtmlHelper extension looks like:
 
-```
+```csharp
 public static string Pager(this HtmlHelper htmlHelper, int pageSize, int currentPage, int totalItemCount)
 ```
 
@@ -59,7 +59,7 @@ We're assuming that the page links point to the the current controller and curre
 
   
 
-```
+```csharp
 public static string Pager(this HtmlHelper htmlHelper, int pageSize, int currentPage, int totalItemCount, string actionName)
 ```
 
@@ -68,7 +68,7 @@ Combining the Pager html helper and IPagedList<T> in a view page (that inherits 
 
   
 
-```
+```html
 <table class="grid">
     <thead>
         <tr>
@@ -102,7 +102,7 @@ Internally, the pager uses RouteTable.Routes.GetVirtualPath() to render the url'
 
 Many scenarios where you want to use paging also use filtering. It's possible to pass extra parameters to the Pager helper via a RouteValueDictionary or an anonymous type. This adds these parameters to the page links that are generated:
 
-```
+```html
 <div class="pager">
     <%= Html.Pager(ViewData.Model.PageSize, ViewData.Model.PageNumber, ViewData.Model.TotalItemCount, new { categoryname = ViewData["CategoryDisplayName"] } )%>
 </div>

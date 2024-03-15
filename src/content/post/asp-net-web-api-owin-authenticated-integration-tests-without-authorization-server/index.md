@@ -21,7 +21,7 @@ Aaron Powell has written [an extensive post](http://www.aaron-powell.com/posts/2
 
 To generate and use a token in the integration tests, we create a base class (BaseAuthenticatedApiTestFixture) for our authenticated test fixtures that borrows some of the logic of the Owin  OAuthAuthorizationServerMiddleware internals. This base class inherits again from BaseApiTestFixture. This class contains all logic for creating the Owin TestServer and calling the API and is very much inspired by the BaseServerTest class in Aaron Powell’s [post](http://www.aaron-powell.com/posts/2014-01-12-integration-testing-katana-with-auth.html).
 
-```
+```csharp
 /// <summary>
 /// Base class for integration tests that require authentication.
 /// </summary>
@@ -66,8 +66,6 @@ public abstract class BaseAuthenticatedApiTestFixture : BaseApiTestFixture
         return accessToken;
     }
 }
-
-
 ```
 
 The GenerateToken() method in the code above creates the token in three steps:
@@ -78,7 +76,7 @@ The GenerateToken() method in the code above creates the token in three steps:
 
 To make sure the token is accepted by the Owin OAuthBearer middleware, the DataProtector in step 3 needs to be the same as the one that is used for decrypting the token. Luckily we can create one during initialization of the Owin TestServer. This is set in a protected property of the BaseApiTestFixture so we can access it in BaseAuthenticatedApiTestFixture the subclass:
 
-```
+```csharp
 protected BaseApiTestFixture()
 {
     // Normally you'd create the server with:
@@ -96,15 +94,13 @@ protected BaseApiTestFixture()
     });
     AfterServerSetup();
 }
-
-
 ```
 
 ## Testing
 
 To execute authenticated tests, just inherit from BaseAuthenticatedApiTestFixture and call the test methods in the base class. This is the controller we’re testing:
 
-```
+```csharp
 public class AuthenticatedController : ApiController
 {
     [HttpGet]
@@ -130,12 +126,11 @@ public class AuthenticatedController : ApiController
         return Ok("hello poweruser");
     }
 }
-
 ```
 
 As you can see, there are Authorize attributes that require authorization. The actual test code (using XUnit) is super simple:
 
-```
+```csharp
 public class AuthenticatedApiTests : BaseAuthenticatedApiTestFixture
 {
     private string _uri;
@@ -176,8 +171,6 @@ public class AuthenticatedApiTests : BaseAuthenticatedApiTestFixture
         Assert.Equal("hello poweruser", result);
     }
 }
-
-
 ```
 
 ## Example solution

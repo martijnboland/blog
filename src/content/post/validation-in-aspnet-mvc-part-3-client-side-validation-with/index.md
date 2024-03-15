@@ -40,119 +40,35 @@ The existing Monorail codebase proved to be of great value and could be used alm
 
 Below, you can see the output of the validation helper for the new user form in Cuyahoga:
 
-```
+```html
 <script type="text/javascript">
-```
-
-```
 $(document).ready(function() {
-```
-
-```
     jQuery.validator.addMethod('notEqualTo', function(value, element, param) { return value != jQuery(param).val(); }, 'Must not be equal to {0}.' );
-```
-
-```
     jQuery.validator.addMethod('greaterThan', function(value, element, param) { return ( IsNaN( value ) && IsNaN( jQuery(param).val() ) ) || ( value > jQuery(param).val() ); }, 'Must be greater than {0}.' );
-```
-
-```
     jQuery.validator.addMethod('lesserThan', function(value, element, param) { return ( IsNaN( value ) && IsNaN( jQuery(param).val() ) ) || ( value < jQuery(param).val() ); }, 'Must be lesser than {0}.' );
-```
-
-```
     jQuery.validator.addMethod('numberNative', function(value, element, param) { return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:\.\d{3})+)(?:\,\d+)?$/.test(value); }, 'Not a valid number.' );
-```
-
-```
     jQuery.validator.addMethod('simpleDate', function(value, element, param) { return this.optional(element) || /^\d{1,2}\-\d{1,2}\-\d{4}$/.test(value); }, 'Not a valid date.' );
-```
-
-```
     $("#userform").validate({
-```
-
-```
         rules : {
-```
-
-```
             UserName: {  rangelength: [1, 50] , required: true },
-```
-
-```
             Password: {   required: true , rangelength: [5, 50] , equalTo: "#PasswordConfirmation" },
-```
-
-```
             PasswordConfirmation: {   equalTo: "#Password" , rangelength: [5, 50] , required: true },
-```
-
-```
             FirstName: { rangelength: [1, 100] },
-```
-
-```
             LastName: { rangelength: [1, 100] },
-```
-
-```
             Email: {   required: true , rangelength: [1, 100] , email: true },
-```
-
-```
             Website: { rangelength: [1, 100] }
-```
-
-```
         },
-```
-
-```
         messages : {
-```
-
-```
             UserName: {  rangelength: "The username must be between 1 and 50 characters" , required: "The username may not be empty" },
-```
-
-```
             Password: {   required: "The password may not be empty" , rangelength: "The password must contain at least 5 characters" , equalTo: "The password must be the same as the confirmation password" },
-```
-
-```
             PasswordConfirmation: {   equalTo: "The password must be the same as the confirmation password" , rangelength: "The password must contain at least 5 characters" , required: "The password confirmation may not be empty" },
-```
-
-```
             FirstName: { rangelength: "The firstname must be between 1 and 100 characters" },
-```
-
-```
             LastName: { rangelength: "The lastname must be between 1 and 100 characters" },
-```
-
-```
             Email: {   required: "E-mail address may not be empty" , rangelength: "E-mail address must be between 1 and 100 characters" , email: "Invalid e-mail address" },
-```
-
-```
             Website: { rangelength: "The website url must be between 1 and 100 characters" }
-```
-
-```
         }
-```
-
-```
     });
-```
-
-```
 });
-```
-
-```
 </script>
 ```
 

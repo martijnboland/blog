@@ -25,7 +25,7 @@ This is the one and only requirement:
 
 To have a ShowMessage method in every controller action, we could implement it in a base controller class or create an extension method. Let’s try an extension method:
 
-```
+```csharp
 public static void ShowMessage(this Controller controller, MessageType messageType, string message, bool showAfterRedirect = false)
 {
     var messageTypeKey = messageType.ToString();
@@ -49,7 +49,7 @@ We can now call ShowMessage(). With this solution it’s only possible to store 
 
 Creating messages is one thing, but what about displaying them? It’s also easy. Enter the RenderMessages() HTML helper:
 
-```
+```csharp
 /// <summary>
 /// Render all messages that have been set during execution of the controller action.
 /// </summary>
@@ -88,7 +88,7 @@ Now this is getting tricky. In our AJAX actions, we can still call ShowMessage()
 
 I discovered a very nice solution on StackOverflow: [use custom HTTP headers to store a message](http://stackoverflow.com/questions/366311/how-do-you-handle-rails-flash-with-ajax-requests). With the help of a global action filter we can check if there are messages in the ViewData dictionary and when the request was an AJAX request, copy the messages to a custom HTTP header.
 
-```
+```csharp
 /// <summary>
 /// If we're dealing with ajax requests, any message that is in the view data goes to
 /// the http header.
@@ -123,7 +123,7 @@ public class AjaxMessagesFilter : ActionFilterAttribute
 
 Finally the message in the HTTP headers are displayed with a little bit of jQuery:
 
-```
+```js
 $(document).ready(function () {
     handleAjaxMessages();
 });

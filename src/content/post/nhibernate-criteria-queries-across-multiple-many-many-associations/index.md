@@ -15,25 +15,16 @@ User has a many-many association with Role and Role has a many-many association 
 
 With hql this is simple:
 
-```
+```sql
 select distinct u from User u join u.Roles r join r.Sites s where s.Id = :siteId
 ```
 
 With a criteria query, it appeared a little bit harder. First I tried this:
 
-```
+```csharp
 ICriteria crit = session.CreateCriteria(typeof(User))
-```
-
-```
     .CreateCriteria("Roles") // traverse into Roles
-```
-
-```
         .CreateCriteria("Sites") // traverse into Sites
-```
-
-```
             .Add(Expression.Eq("Id", siteId);
 ```
 
@@ -41,43 +32,16 @@ Note the absence of the _distinct_ keyword anywhere in the query. A nice Cartesi
 
 Finally, I found the solution in using [subqueries](http://davybrion.com/blog/2008/10/querying-with-nhibernate/):
 
-```
+```csharp
 ICriteria crit = session.CreateCriteria(typeof(User));
-```
-
-```
 DetachedCriteria roleIdsForSite = DetachedCriteria.For(typeof (Role))
-```
-
-```
     .SetProjection(Projections.Property("Id"))
-```
-
-```
     .CreateCriteria("Sites", "site")
-```
-
-```
     .Add(Expression.Eq("site.Id", siteId.Value));
-```
-
-```
 DetachedCriteria userIdsForRoles = DetachedCriteria.For(typeof(User))
-```
-
-```
     .SetProjection(Projections.Distinct(Projections.Property("Id")))
-```
-
-```
     .CreateCriteria("Roles")
-```
-
-```
         .Add(Subqueries.PropertyIn("Id", roleIdsForSite));
-```
-
-```
 crit.Add(Subqueries.PropertyIn("Id", userIdsForRoles));
 ```
 

@@ -16,7 +16,7 @@ Let’s say it bluntly: EF supports [Foreign Key associations](http://blogs.msdn
 
 - Filtering in collection properties causes select n+1 issues. So forget:  
     
-    ```
+    ```csharp
     Order.OrderLines.Where(ol => ol.Product.Id == productId)
     ```
     
@@ -24,7 +24,7 @@ Let’s say it bluntly: EF supports [Foreign Key associations](http://blogs.msdn
     
       
     
-    ```
+    ```csharp
     Order.OrderLines.Where(ol => ol.ProductId == productId)
     ```
     
@@ -49,7 +49,7 @@ This is something not many people complain about, but I really miss the option t
 EF doesn’t have a way to specify how changes in your entity are cascaded into related entities. I’m not sure if this is a good or a bad thing. On one hand I miss having control over this, but on the other hand EF seemed to do well without setting anything.  
 Out of the box, EF code first generates CASCADE  DELETE database constraints on required associations but when your model gets only a little bit complex, you’ll get errors like “Introducing FOREIGN KEY constraint on table may cause cycles or multiple cascade paths”. Fortunately, you can turn this off in your DbContext:
 
-```
+```csharp
 protected override void OnModelCreating(DbModelBuilder modelBuilder)
 {
     // Remove cascade delete convention because it causes trouble when generating the DB.
@@ -63,7 +63,7 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
 
 In NHibernate you can simply update an object that isn’t associated with a Session via Session.Update(). EF can do the same via Attach() but you must not forget to explicitly set the object state to modified, otherwise no updates occur:
 
-```
+```csharp
 dbContext.Customers.Attach(customer);
 dbContext.Entry(customer).State = EntityState.Modified;
 dbContext.SaveChanges();

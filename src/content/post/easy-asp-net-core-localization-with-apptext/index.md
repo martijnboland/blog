@@ -29,13 +29,13 @@ We’re going to create an example ASP.NET Core MVC application and replace stat
 
 Let’s begin with the empty MVC app:
 
-```
+```bash
 dotnet new mvc
 ```
 
 Followed by:
 
-```
+```bash
 dotnet run
 ```
 
@@ -55,7 +55,7 @@ ASP.NET Core has [standard components for localization](https://docs.microsoft.c
 
 Page title in Controllers/HomeController.cs:
 
-```
+```csharp
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -78,7 +78,7 @@ public class HomeController : Controller
 
 Brand title in Views/Shared/\_Layout.cshtml:
 
-```
+```html
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer L
 <!DOCTYPE html>
@@ -95,21 +95,17 @@ Brand title in Views/Shared/\_Layout.cshtml:
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@L["AspNetCoreMvcExample"]</a>
-
-
 ```
 
 Page heading in Views/Home/Index.cshtml:
 
-```
+```html
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer L
 <div class="text-center">
     <h1 class="display-4">@L["Welcome"]</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-
-
 ```
 
 Now, when running the application again, we get an error message that IStringLocalizer can not be resolved:
@@ -118,7 +114,7 @@ Now, when running the application again, we get an error message that IStringLoc
 
 This is because we didn’t register the localization services in Startup.cs yet. Adding these to Startup.cs fixes the error message:
 
-```
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddLocalization();
@@ -126,8 +122,6 @@ public void ConfigureServices(IServiceCollection services)
     services.AddControllersWithViews()
         .AddViewLocalization();
 }
-
-
 ```
 
 The application is now set up to use .resx resource files for localization. In this post, we won’t get into detail how this works. [Look here](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-3.1#resource-files) for more information.
@@ -140,17 +134,17 @@ Adding AppText for localization is very easy. Just two NuGet packages and a litt
 
 Add the NuGet packages:
 
-```
+```bash
 dotnet add package AppText.Localization
 ```
 
-```
+```bash
 dotnet add package AppText.AdminApp
 ```
 
 Then change Startup.cs to enable AppText localization. We also inject IHostEnvironment via the constructor because we need it to resolve the physical folder where the AppText is running for its file storage:
 
-```
+```csharp
 public class Startup
 {
     public Startup(IConfiguration configuration, IHostEnvironment env)
@@ -189,7 +183,6 @@ public class Startup
         services.AddControllersWithViews()
             .AddViewLocalization();
     }
-
 ```
 
 With only a few lines of code, we added a small CMS to our application and replaced the standard ASP.NET Core .resx localization with the localization implementation of AppText.
@@ -236,7 +229,7 @@ In the AppText Admin app, we can edit text resources for multiple languages at o
 
 Before we can see the translations we first need to hook up AppText with the ASP.NET Core [request localization middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-3.1#localization-middleware). This is done by setting ConfigureRequestLocalizationOptions  to true:
 
-```
+```csharp
 services.AddAppText()
     ...
     .AddAppTextLocalization(options =>
@@ -244,18 +237,16 @@ services.AddAppText()
         ...
         options.ConfigureRequestLocalizationOptions = true;
     });
-
 ```
 
 And by adding the [request localization middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-3.1#localization-middleware) in the Configure() method of Startup.cs, we can change the culture of our application with a querystring parameter, a cookie or the Accept-Language HTTP header of the browser:
 
-```
+```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     ...
     app.UseRequestLocalization();
 }
-
 ```
 
 Now, the translations are visible by adding ‘?culture=nl’ as querystring:

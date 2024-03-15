@@ -58,7 +58,7 @@ Add the following NuGet packages:
 
 Next, we’ll add the files appsettings.json and appsettings.Development.json to the root of the project. These files contain our logging configuration, together with other configuration options. See [https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration "https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration") for an overview of ASP.NET Core configuration and [https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging "https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging") for ASP.NET Core logging. The file Startup.cs is the place where everything is wired together:
 
-```
+```csharp
 public class Startup
 {
     public Startup(IHostingEnvironment env)
@@ -108,7 +108,7 @@ _As it turns out, this looks remarkably similar to the ASP.NET Core Web API temp
 
 The layout page (\_Layout.cshtml) already has some bootstrap-specific markup:
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,7 +157,7 @@ Bootstrap and jQuery are installed from the NPM repository. NPM is the package m
 
 NPM requires a package.json file in the root of the project, so we’re adding that (Add New Item –> npm Configuration file, or from the command line in the root folder with ‘npm init’). After that, we’ll install our client libs with the following command (from the application root folder):
 
-```
+```bash
 npm install –save jquery bootstrap
 ```
 
@@ -169,7 +169,7 @@ The libraries are installed, but how can we use these? The files are installed i
 
 For simplicity we’re going to create a single bundle that contains both our scripts and also our css styles. This way we only have to reference a single file in our layout page. The following code goes into the \_Layout.cshtml file just before the </body> tag (in Staging and Production environments, a version is added for cache busting):
 
-```
+```html
 <environment names="Development">
     <script src="~/dist/main.js"></script>
 </environment>
@@ -182,13 +182,13 @@ Thus our goal becomes to create a single bundle ‘main.js’ that goes into the
 
 Add webpack and some loaders to our project:
 
-```
+```bash
 npm install --save-dev webpack style-loader css-loader url-loader file-loader
 ```
 
 After that we can add the [webpack configuration file](https://webpack.js.org/configuration/) to the root of our project (webpack.config.js):
 
-```
+```js
 var path = require('path');
 var webpack = require('webpack');
 
@@ -243,7 +243,7 @@ For the other config options, please check the [webpack configuration reference]
 
 ![image](./images/image_thumb_10.png "image"). The file ‘Client/js/main.js’ contains:
 
-```
+```js
 import '../css/site.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery';
@@ -254,7 +254,7 @@ There is no code in this file apart from some ES6-style imports. However, exactl
 
 Now we can create the bundle, but how do we instruct webpack to do that? The easiest way to do it is by adding commands to the scripts section of the NPM package.json file:
 
-```
+```json
 "scripts": {
   "start": "webpack --config webpack.config.js --watch --progress --profile",
   "build": "webpack --config webpack.config.js --progress --profile",
@@ -265,19 +265,19 @@ Now we can create the bundle, but how do we instruct webpack to do that? The eas
 
 To create a development bundle enter:
 
-```
+```bash
 npm run build
 ```
 
 To create a minified production bundle:
 
-```
+```bash
 npm run prod
 ```
 
 During development, it’s convenient that bundles are updated when something changes. This can be accomplished with:
 
-```
+```bash
 npm start
 ```
 
@@ -293,7 +293,7 @@ _Note: you can fully integrate the NPM commands in your Visual Studio workflow w
 
 So there we have it. An ASP.NET Core MVC web application with NPM and webpack. Finally, we need something that creates our production bundle during publish. This can simply be done by just adding a few lines to the .csproj file:
 
-```
+```xml
 <Target Name="BuildClientAssets" BeforeTargets="Publish">
   <Exec Command="npm install" />
   <Exec Command="npm run prod" />

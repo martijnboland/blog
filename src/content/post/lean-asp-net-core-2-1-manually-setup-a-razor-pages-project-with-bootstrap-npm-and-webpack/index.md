@@ -59,7 +59,7 @@ Since ‘_lean’_ is our objective we’re keeping it simple and don’t use ou
 
 1. Create a new empty ASP.NET Core project based on the webapi template. This project template serves as a nice clean starting point that has appSettings.json etc. setup but not too much garbage that needs to be deleted anyway:
     
-    ```
+    ```bash
     mkdir LeanAspNetCore
     cd LeanAspNetCore
     dotnet new webapi
@@ -67,7 +67,7 @@ Since ‘_lean’_ is our objective we’re keeping it simple and don’t use ou
     
 2. Create a Pages folder in the folder where new project is created. Add the first Razor Page, Index.cshtml to the Pages folder:
     
-    ```
+    ```html
     @page
     <h1>Index</h1>
     
@@ -76,7 +76,7 @@ Since ‘_lean’_ is our objective we’re keeping it simple and don’t use ou
 3. Locate the Properties/launchSettings.json file and set the values of both launchUrl attributes to "":![image](./images/image_thumb.png "image")
 4. Run the application:
     
-    ```
+    ```bash
     dotnet run
     ```
     
@@ -90,44 +90,41 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
 
 1. Create a ClientApp folder and install libraries there with NPM. The folder is named ClientApp simply because it’s called that way in the official SPA templates, so it will look already familiar for some of you.
     
-    ```
+    ```bash
     mkdir ClientApp
     cd ClientApp
     npm init -y
     npm install --save jquery popper.js bootstrap
     npm install --save-dev webpack webpack-cli style-loader css-loader
-    
     ```
     
     With the above commands we created a package.json file, installed bootstrap with its dependencies (jquery and popper.js) and the build libraries (webpack with style and css loaders).
 2. Add a css file in /ClientApp/styles/style.css. Here, we import the bootstrap css and add our own custom styles:
     
-    ```
+    ```css
     @import '~bootstrap/dist/css/bootstrap.css';
     
     body {
       background-color: #cdf;
     }
-    
     ```
     
     _Note: the ~ in the import indicates that webpack should look in the node\_modules folder._
 3. Create an entry point for the client-side bundle. This is the JavaScript file that imports all dependencies. In our case it’s located in /ClientApp/js/main.js:
     
-    ```
+    ```js
     import '../styles/style.css';
     
     import $ from 'jquery';
     
     import 'popper.js';
-    import 'bootstrap';
-    
+    import 'bootstrap';    
     ```
     
     Note that the css file is also imported here.
 4. Add a webpack configuration file (/ClientApp/webpack.config.js)
     
-    ```
+    ```js
     const path = require('path');
     
     module.exports = (env = {}, argv = {}) => {
@@ -157,7 +154,6 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
       
       return config;
     };
-    
     ```
     
     See the [webpack documentation](https://webpack.js.org/configuration/) for the configuration options. The configuration file above means: 'start building from the ./js/main.js file, write the results in the ../wwwroot/dist folder and process css files via the css-loader and style-loader'.
@@ -166,31 +162,29 @@ To make things look a bit less basic we’ll just add some Bootstrap styles. But
 5. Add a script command to package.json that executes the webpack build:![image](./images/image_thumb_4.png "image")
 6. Build the client bundle (still from ClientApp folder):
     
-    ```
-    npm run build
-    
+    ```bash
+    npm run build    
     ```
     
     After building, there is a single file 'main.js' in the /wwwroot/dist folder.
 7. All we need to do now is to create a Razor partial \_Header.cshtml file with a Bootstrap navigation bar and \_Layout.cshtml file that includes the header file and add  a script link to ~/dist/main.js:![image](./images/image_thumb_5.png "image")Noticed the environment tag helpers in the image above? We just include the main.js script file in the development environment but for the other environments, a version is appended to the file for cache busting. The layout file is set as the default layout for all pages via \_ViewStart.cshtml in the Pages folder. To enable the tag helpers we must add a \_ViewImports.cshtml file to the Pages folder:
     
-    ```
+    ```html
     @namespace LeanAspNetCore.Pages
-    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-    
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers    
     ```
     
     For more information about Razor layouts, \_ViewStart.cshtml and ViewImports.html, [visit this page](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-2.1).
 8. Add the StaticFiles middleware to Startup.cs just before app.UseMvc() so we can serve the js and other static files:
     
-    ```
+    ```csharp
     app.UseStaticFiles();
     
     ```
     
 9. Go to the project root folder in the command line and execute:
     
-    ```
+    ```bash
     dotnet run
     ```
     
@@ -202,7 +196,7 @@ That’s it! With a few steps we added Bootstrap from NPM and we’re able to in
 
 Having to execute ‘npm run build’ every time you want to see the results of a small change is getting tedious pretty fast . Luckily, ASP.NET Core already contains webpack development middleware (in Microsoft.AspNetCore.SpaServices.Webpack) that watches your client files and automatically rebuilds the bundle when a change happens. Change the Configure method in Startup.cs to:
 
-```
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     if (env.IsDevelopment())
@@ -223,18 +217,17 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseStaticFiles();
     app.UseMvc();
 }
-
 ```
 
 As you can see, even hot module replacement is supported so the browser automatically reloads changed parts of your bundle without having to to a complete refresh. To make this happen we also need to add a few client libraries as well. Go to the ClientApp folder and execute:
 
-```
+```bash
 npm install --save-dev aspnet-webpack webpack-dev-middleware webpack-hot-middleware
 ```
 
 Now, the development environment is setup for a nice development experience. Go to the project root folder and execute:
 
-```
+```bash
 dotnet watch run
 ```
 
@@ -246,13 +239,13 @@ One of the goals of this exercise is to create an optimized production-ready ver
 
 First however, we need to add a little bit extra webpack configuration to extract the css from the main.js bundle to its own file. With the css is in the main bundle, you might have noticed some flickering because the css is loaded _after_ the html and JavaScript (also because the script tag is at the bottom of the \_Layout.cshtml page). We use the webpack [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to create the separate css bundle (from the ClientApp folder):
 
-```
+```bash
 npm install --save-dev mini-css-extract-plugin
 ```
 
 Change webpack.config.js to:
 
-```
+```js
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -290,37 +283,34 @@ module.exports = (env = {}, argv = {}) => {
   
   return config;
 };
-
 ```
 
 When the mode is 'production' (isProd), the MiniCssExtractPlugin loader is used instead of the style-loader that injects the css dynamically in the page. To load the extracted styles, a style tag is added to \_Layout.cshtml:
 
-```
+```html
 <environment names="Staging,Production">
     <link rel="stylesheet" href="~/dist/styles.css" asp-append-version="true" />
 </environment>
-
 ```
 
 Next, we need to add a ‘prod’  command to the scripts section in package.json to create a production bundle:
 
-```
+```json
 "scripts": {
   "build": "webpack --mode development --progress",
   "prod": "rimraf ../wwwroot/dist && webpack --mode production --progress"
 }
-
 ```
 
 The ‘rimraf’ (rm –rf) command is just to clean any build artifacts from earlier builds. We don’t want those in our production bundles. Install it with npm (ClientApp folder):
 
-```
+```bash
 npm install --save-dev rimraf
 ```
 
 Test if the production bundles are created by running:
 
-```
+```bash
 npm run prod
 ```
 
@@ -328,7 +318,7 @@ You should now see a separate styles.css file in the wwwroot/dist folder and the
 
 How do we ensure that the production bundles are created when publishing the application? How can we hook into the publishing process? Edit the .csproj file in the project root folder:
 
-```
+```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
@@ -366,13 +356,11 @@ How do we ensure that the production bundles are created when publishing the app
   </Target>
 
 </Project>
-
-
 ```
 
 A new target ‘BuildClientAssets’ is executed after ComputeFilesToPublish during the publishing process. Here we generate the client bundles by executing ‘npm run prod’. Also ‘npm install’ is called to ensure the libraries are installed. After generating the bundles, these are added to the files to publish. This step is copied directly from the ASP.NET SPA templates. Big thanks to the ASP.NET developers for figuring this out :-). Now publish:
 
-```
+```bash
 dotnet publish
 ```
 
