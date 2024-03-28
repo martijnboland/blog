@@ -1,7 +1,8 @@
 ---
-import aboutImg from "@/assets/about-astro.png";
+import aboutImg from "@/assets/martijn-blog.jpg";
 import PageLayout from "@/layouts/Base.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 const meta = {
 	description: "I'm a starter theme for Astro.build",
@@ -12,36 +13,60 @@ const meta = {
 <PageLayout meta={meta}>
 	<div class="space-y-6">
 		<h1 class="title">About</h1>
+		<p>Hi, my name is Martijn Boland.</p>
 		<p>
-			Hi, I’m a starter Astro. I’m particularly great for getting you started with your own blogging
-			website.
+			By day, I’m a .NET and JavaScript developer and the co-owner of a software company called
+			<a class="cactus-link" href="https://taiga.nl" rel="noopener noreferrer" target="_blank"
+				>Taiga</a
+			>. At night, I’m developer of <a class="cactus-link" href="https://github.com/martijnboland"
+				>open source projects</a
+			>, a <a
+				class="cactus-link"
+				href="https://open.spotify.com/artist/5vDaDK8rsGLQnDAwU0oOkB"
+				rel="noopener noreferrer"
+				target="_blank">guitar player</a
+			>, <a
+				class="cactus-link"
+				href="https://soundcloud.com/huisgemaakt"
+				rel="noopener noreferrer"
+				target="_blank">songwriter</a
+			> and generally enjoying life.
 		</p>
 		<div class="flex justify-center">
-			<Image
-				alt="A cartoon cactus looking at the 'Astro.build' logo"
-				fetchpriority="high"
-				loading="eager"
-				src={aboutImg}
-			/>
+			<Image alt="Martijn Boland" fetchpriority="high" loading="eager" src={aboutImg} />
 		</div>
-		<p>Here are my some of my awesome built in features:</p>
-		<ul class="list-inside list-disc">
-			<li>I'm ultra fast as I'm a static site</li>
-			<li>I'm fully responsive</li>
-			<li>I come with a light and dark mode</li>
-			<li>I'm easy to customise and add additional content</li>
-			<li>I have Tailwind CSS styling</li>
-			<li>Shiki code syntax highlighting</li>
-			<li>Satori for auto generating OG images for blog posts</li>
-		</ul>
 		<p>
-			Clone or fork my <a
-				aria-label="github repository"
-				class="cactus-link inline-block"
-				href="https://github.com/chrismwilliams/astro-cactus"
-				rel="noopener noreferrer"
-				target="_blank">repo</a
-			> if you like me!
+			<Icon title="E-mail" class="inline-block h-6 w-6" focusable="false" name="mdi:email" />
+			martijn [at] taiga [dot] nl
+		</p>
+		<p>
+			<Icon
+				title="My company web site"
+				class="inline-block h-6 w-6"
+				focusable="false"
+				name="mdi:earth"
+			/>
+			<a href="https://taiga.nl" class="cactus-link" target="_blank" title="Taiga web site"
+				>taiga.nl</a
+			>
+		</p>
+		<p>
+			<Icon title="Github" class="inline-block h-6 w-6" focusable="false" name="mdi:github" />
+			<a
+				href="https://github.com/martijnboland"
+				class="cactus-link"
+				target="_blank"
+				title="Github Martijn Boland">github.com/martijnboland</a
+			>
+		</p>
+		<p>
+			<Icon title="LinkedIn" class="inline-block h-6 w-6" focusable="false" name="mdi:linkedin" />
+			<a
+				href="https://linkedin.com/in/martijnboland"
+				class="cactus-link"
+				target="_blank"
+				title="LinkedIn Martijn Boland">linkedin.com/martijnboland</a
+			>
 		</p>
 	</div>
 </PageLayout>

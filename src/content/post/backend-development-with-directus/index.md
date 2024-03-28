@@ -46,11 +46,11 @@ Personally, I’d like to think of it as a **Data Management Application** more 
 
 By installing Directus you get:
 
-- A management interface for your data model (called ‘collections’) and forms ![directus-datamodel](./images/directus-datamodel_thumb-2.png "directus-datamodel")
-- A management interface for the data itself ![directus-newsitem](./images/directus-newsitem_thumb.png "directus-newsitem")
-- Files management – upload images, movies, on-the-fly image resize ![directus-files](./images/directus-files_thumb.png "directus-files")
+- A management interface for your data model (called ‘collections’) and forms ![directus-datamodel](./images/directus-datamodel-2.png "directus-datamodel")
+- A management interface for the data itself ![directus-newsitem](./images/directus-newsitem.png "directus-newsitem")
+- Files management – upload images, movies, on-the-fly image resize ![directus-files](./images/directus-files.png "directus-files")
 - User and roles management
-- Permissions management (define for each role which fields and items can be accessed, updated and deleted) ![directus-permissions](./images/directus-permissions_thumb.png "directus-permissions")
+- Permissions management (define for each role which fields and items can be accessed, updated and deleted) ![directus-permissions](./images/directus-permissions.png "directus-permissions")
 - A REST and GraphQL API for other systems to work with the data
 - Database support for PostgreSQL, MySQL, MS SQL Server, SQLite and more
 
