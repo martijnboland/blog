@@ -18,6 +18,8 @@ const { remarkPluginFrontmatter } = await render();
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	month: "long",
 };
+
+const basePath = import.meta.env.BASE_URL;
 ---
 
 {
@@ -77,7 +79,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 						aria-label={`View more blogs with the tag ${tag}`}
 						class="cactus-link inline-block before:content-['#']"
 						data-pagefind-filter="tag"
-						href={`/tags/${tag}/`}
+						href={`${basePath}/tags/${tag}/`}
 					>
 						{tag}
 					</a>

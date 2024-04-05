@@ -9,6 +9,8 @@ const meta = {
 	description: "A list of all the topics I've written about in my posts",
 	title: "All Tags",
 };
+
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <PageLayout meta={meta}>
@@ -20,7 +22,7 @@ const meta = {
 					<a
 						class="cactus-link inline-block"
 						data-astro-prefetch
-						href={`/tags/${tag}/`}
+						href={`${basePath}/tags/${tag}/`}
 						title={`View posts with the tag: ${tag}`}
 					>
 						&#35;{tag}

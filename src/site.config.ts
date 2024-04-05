@@ -24,18 +24,19 @@ export const siteConfig: SiteConfig = {
 };
 
 // Used to generate links in both the Header & Footer.
+const basePath = import.meta.env.BASE_URL;
 export const menuLinks: Array<{ title: string; path: string }> = [
 	{
 		title: "Home",
-		path: "/",
+		path: `${basePath}/`,
 	},
 	{
 		title: "Posts",
-		path: "/posts/",
+		path: `${basePath}/posts/`,
 	},
 	{
 		title: "About",
-		path: "/about/",
+		path: `${basePath}/about/`,
 	}
 ];
 

@@ -33,17 +33,19 @@ const meta = {
 	title: `Tag: ${tag}`,
 };
 
+const basePath = import.meta.env.BASE_URL;
+
 const paginationProps = {
 	...(page.url.prev && {
 		prevUrl: {
 			text: `← Previous Tags`,
-			url: page.url.prev,
+			url: basePath + page.url.prev,
 		},
 	}),
 	...(page.url.next && {
 		nextUrl: {
 			text: `Next Tags →`,
-			url: page.url.next,
+			url: basePath + page.url.next,
 		},
 	}),
 };
@@ -51,7 +53,7 @@ const paginationProps = {
 
 <PageLayout meta={meta}>
 	<h1 class="title mb-6 flex items-center">
-		<a class="text-accent sm:hover:underline" href="/tags/">Tags</a>
+		<a class="text-accent sm:hover:underline" href={`${basePath}/tags/`}>Tags</a>
 		<span class="me-3 ms-2">→</span>
 		<span class="text-xl">#{tag}</span>
 	</h1>

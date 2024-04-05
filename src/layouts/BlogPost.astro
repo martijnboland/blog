@@ -3,9 +3,9 @@ import type { CollectionEntry } from "astro:content";
 
 import BlogHero from "@/components/blog/Hero.astro";
 import TOC from "@/components/blog/TOC.astro";
-import WebMentions from "@/components/blog/webmentions/index.astro";
 
 import BaseLayout from "./Base.astro";
+import PostComments from "@/components/blog/PostComments.astro";
 
 interface Props {
 	post: CollectionEntry<"post">;
@@ -30,7 +30,6 @@ const { headings } = await post.render();
 				class="prose prose-cactus mt-12 prose-headings:font-semibold prose-headings:text-accent-2 prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none md:max-w-2xl xl:max-w-3xl"
 			>
 				<slot />
-				<WebMentions />
 			</div>
 		</article>
 	</div>
@@ -52,6 +51,7 @@ const { headings } = await post.render();
 			<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
 		</svg>
 	</button>
+	<PostComments />
 </BaseLayout>
 
 <script>
