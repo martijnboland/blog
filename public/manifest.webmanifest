@@ -1,7 +1,7 @@
 {
-	"name": "Astro Theme Cactus Demo",
-	"short_name": "Astro_Cactus",
-	"description": "Starter blog site for Astro",
+	"name": "Martijn Boland blog",
+	"short_name": "Martijn Boland",
+	"description": "Martijn Boland blog",
 	"icons": [
 		{
 			"src": "./192x192.png",
