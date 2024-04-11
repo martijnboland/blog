@@ -18,8 +18,6 @@ coverImage: {
 
 …or how to cut down custom application development time and save money get productive.
 
-![](./images/directus-2.png)
-
 Imagine, you’re a software developer and you’re super excited to start this new fancy project. Then, you find out that 80 percent of the work involves coding the **backend** with 40 maintenance screens just for managing data, with hardly any business logic, except some authorization rules.
 
 Yep, another boring forms-over-data application…
