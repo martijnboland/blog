@@ -50,11 +50,8 @@ export default defineConfig({
 		plugins: [rawFonts([".ttf", ".woff"])],
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
-		},
-	},
-	redirects: {
-    '/[year]/[month]/[day]/[slug]': '/martijn/posts/[slug]'
-  }
+		}
+	}
 });
 
 function rawFonts(ext: Array<string>) {
