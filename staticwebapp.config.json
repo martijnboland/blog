@@ -1,0 +1,12 @@
+{
+  "routes": [
+      {
+          "route": "/index.html",
+          "redirect": "/martijn"
+      },
+      {
+          "route": "/",
+          "redirect": "/martijn"
+      }
+  ]
+}

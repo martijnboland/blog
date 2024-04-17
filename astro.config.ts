@@ -15,6 +15,7 @@ export default defineConfig({
 	// ! Please remember to replace the following site property with your own domain
 	site: "https://blogs.taiga.nl/martijn/",
 	base: "/martijn",
+	outDir: "./dist/martijn",
 	markdown: {
 		remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
 		rehypePlugins: [
