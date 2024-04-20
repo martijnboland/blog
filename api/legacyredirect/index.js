@@ -1,4 +1,4 @@
-const { parseURL } = require('ufo');
+const url = require('url');
 
 async function legacyredirect(context, req) {
   const originalUrl = req.headers['x-ms-original-url'];
@@ -8,7 +8,7 @@ async function legacyredirect(context, req) {
 
     // Check if the route has the /martijn/{yyyy}/{mm}/{dd}/{slug} path. If so,
     // redirect permanently to /martijn/posts/slug
-    const parsedURL = parseURL(originalUrl);
+    const parsedURL = url.parse(originalUrl);
     const oldUrlPattern = /^\/martijn\/\d{4}\/\d{2}\/\d{2}\/([a-zA-Z0-9-]+)\/?$/
     const match = parsedURL.pathname.match(oldUrlPattern);
     if (match) {
