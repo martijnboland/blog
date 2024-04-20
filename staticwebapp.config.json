@@ -1,4 +1,10 @@
 {
+  "navigationFallback": {
+    "rewrite": "/api/legacyredirect"
+  },
+  "platform": {
+    "apiRuntime": "node:18"
+  },
   "routes": [
       {
           "route": "/index.html",
@@ -7,6 +13,10 @@
       {
           "route": "/",
           "redirect": "/martijn"
+      },
+      {
+        "route": "/404",
+        "statusCode": 404
       }
   ]
 }
