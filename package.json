@@ -5,7 +5,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro check && astro build",
-		"postbuild": "pagefind --site dist",
+		"postbuild": "pagefind --site dist/martijn && shx cp index.html dist",
 		"preview": "astro preview",
 		"format": "prettier -w --cache . && prettier -w --cache **/*.astro",
 		"check": "astro check"
@@ -57,11 +57,12 @@
 		"prettier-plugin-tailwindcss": "^0.5.13",
 		"reading-time": "^1.5.0",
 		"remark-unwrap-images": "^4.0.0",
+		"shx": "^0.3.4",
 		"tailwindcss": "^3.4.3",
 		"typescript": "^5.4.3"
 	},
 	"packageManager": "pnpm@8.6.1",
 	"engines": {
-    "node": "18.19.0"
+		"node": "18.19.0"
 	}
 }
