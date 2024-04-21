@@ -31,8 +31,8 @@ async function legacyredirect(context, req) {
     status: 302,
     headers: {
       location: originalUrl
-        ? `/404?originalUrl=${encodeURIComponent(originalUrl)}`
-        : '/404',
+        ? `/martijn/404.html?originalUrl=${encodeURIComponent(originalUrl)}`
+        : '/martijn/404.html',
     },
   };
 };
