@@ -5,7 +5,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro check && astro build",
-		"postbuild": "pagefind --site dist/martijn && shx cp index.html dist",
+		"postbuild": "pagefind --site dist/martijn && shx cp index.html dist && shx mv dist/martijn/robots.txt dist",
 		"preview": "astro preview",
 		"format": "prettier -w --cache . && prettier -w --cache **/*.astro",
 		"check": "astro check"
