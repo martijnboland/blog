@@ -13,15 +13,12 @@
       {
           "route": "/",
           "redirect": "/martijn"
-      },
-      {
-        "route": "/martijn/404",
-        "statusCode": 404
       }
   ],
   "responseOverrides": {
     "404": {
-      "rewrite": "/martijn/404.html"
+      "rewrite": "/martijn/404.html",
+      "statusCode": 404
     }
   }
 }
