@@ -1,4 +1,5 @@
 {
+  "trailingSlash": "always",
   "navigationFallback": {
     "rewrite": "/api/legacyredirect"
   },
